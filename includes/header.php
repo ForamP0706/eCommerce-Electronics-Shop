@@ -7,11 +7,11 @@
   	<!-- Tell the browser to be responsive to screen width -->
   	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   	<!-- Bootstrap 3.3.7 -->
-  	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+  	<link rel="stylesheet" href="components/bootstrap/dist/css/bootstrap.min.css">
   	<!-- DataTables -->
-    <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" href="components/datatables.net-bs/css/dataTables.bootstrap.min.css">
   	<!-- Font Awesome -->
-  	<link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+  	<link rel="stylesheet" href="components/font-awesome/css/font-awesome.min.css">
 <!-- Bootstrap Theme -->
   	<link rel="stylesheet" href="dist/css/AdminLTE.min.css">
   	<!-- AdminLTE Skins. Choose a skin from the css/skins
