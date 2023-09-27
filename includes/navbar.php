@@ -1,3 +1,4 @@
+<!-- made some improvement -->
 <header class="main-header " >
   <nav class="navbar .navbar-static-top bg-olive">
     <div class="container">
