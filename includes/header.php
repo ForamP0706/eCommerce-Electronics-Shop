@@ -16,8 +16,12 @@
   	
 
   	<link rel="stylesheet" href="components/font-awesome/css/font-awesome.min.css">
+  	<!-- Font Awesome -->
+  	<link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+  	<!-- Theme style -->
 
-
+  	<link rel="stylesheet" href="components/font-awesome/css/font-awesome.min.css">
+<!-- Bootstrap Theme -->
   	<link rel="stylesheet" href="dist/css/AdminLTE.min.css">
   	
   	<link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
@@ -25,6 +29,7 @@
     <link rel="stylesheet" href="magnify/magnify.min.css">
   	
 
+<<<<<<< HEAD
   	
   	<!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic"> -->
 
@@ -32,10 +37,18 @@
     <script src="https://www.paypalobjects.com/api/checkout.js"></script>
    
     <script src='https://www.google.com/recaptcha/api.js'></script>
+ 
+  	<!-- Google Font -->
+  	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+    <!-- Paypal Express -->
+    <script src="https://www.paypalobjects.com/api/checkout.js"></script>  
 
   	
     <style type="text/css">
     
+  
+    /* Small devices (tablets, 768px and up) */
     @media (min-width: 768px){ 
       #navbar-search-input{ 
         width: 60px; 
