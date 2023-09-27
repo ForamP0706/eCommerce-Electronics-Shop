@@ -1,4 +1,4 @@
-<?php include 'includes/session.php'; ?>
+
 <?php include 'includes/header.php'; ?>
 <body class="hold-transition skin-blue layout-top-nav">
 <div class="wrapper">
@@ -48,6 +48,7 @@
 		            </div>
 		            <h2>Some Featured Items</h2>
 		       		<?php
+					include 'includes/conn.php';
 		       			$month = date('m');
 		       			$conn = $pdo->open();
 
