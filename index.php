@@ -1,4 +1,4 @@
-
+<?php include 'includes/conn.php'; ?>
 <?php include 'includes/header.php'; ?>
 <body class="hold-transition skin-blue layout-top-nav">
 <div class="wrapper">
@@ -46,15 +46,14 @@
 		                  <span class="fa fa-angle-right"></span>
 		                </a>
 		            </div>
-		            <h2>Some Featured Items</h2>
+		            <h2>Some Featured Products</h2>
 		       		<?php
-					include 'includes/conn.php';
 		       			$month = date('m');
 		       			$conn = $pdo->open();
 
 		       			try{
 		       			 	$inc = 3;	
-						    $stmt = $conn->prepare("SELECT * from products where category_id = 4");
+							$stmt = $conn->prepare("SELECT * from products where category_id = 4");
 						    $stmt->execute();
 						    foreach ($stmt as $row) {
 						    	$image = (!empty($row['photo'])) ? 'images/'.$row['photo'] : 'images/noimage.jpg';

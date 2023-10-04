@@ -1,4 +1,4 @@
-<?php include 'includes/conn.php'; ?>
+<?php include 'includes/session.php'; ?>
 <?php
 	$slug = $_GET['category'];
 
