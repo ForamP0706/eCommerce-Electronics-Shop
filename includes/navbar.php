@@ -12,7 +12,7 @@
       <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
         <ul class="nav navbar-nav">
           <li><a href="index.php">HOME</a></li>
-          <li><a href="about_us.php">ABOUT US</a></li>
+          <li><a href="aboutus.php">ABOUT US</a></li>
           <li><a href="shop.php">Shop</a></li>
           <li><a href="">CONTACT US</a></li>
           <li class="dropdown">
