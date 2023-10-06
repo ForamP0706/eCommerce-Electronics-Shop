@@ -1,10 +1,6 @@
 <?php
      include('includes/header.php');
-    
-?>
-
-
-<?php  
+     include('includes/navbar.php');
 
 session_start();
 if (!isset($_SESSION['username'])) {
@@ -13,18 +9,17 @@ if (!isset($_SESSION['username'])) {
 }
 include '../database/conn.php';
 include '../includes/functions.php';
-
 $products = get_products($conn);
 ?>
+   <div class="container">
+    <div class="row justify-content-center align-items-center my-5">
+        <div class="col-md-5 text-center border p-4 rounded shadow">
+            <h1 class="display-4 fw-bold">Welcome to the Admin Dashboard</h1>
+            <p class="lead fs-4">Hello, <?php echo $_SESSION['username']; ?>!</p>
+        </div>
+    </div>
+</div>
 
-
-    <h1>Welcome to the Admin Dashboard, <?php $_SESSION['username']; ?></h1>
-
-    <a href="product_list.php">View Products</a>
-    <br>
-
-    <a href="logout.php">Logout</a>
- 
 
 <?php
-     include('includes/footer.php');?>
+include('includes/footer.php');?>

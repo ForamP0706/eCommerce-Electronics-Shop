@@ -1,5 +1,6 @@
 <?php
 include('includes/header.php');
+include('includes/navbar.php');
 
 session_start();
 if (!isset($_SESSION['username'])) {
@@ -14,30 +15,34 @@ $categories = get_categories($conn);
 ?>
 
 
-    <a href="product_add.php">Add New Product</a>
 
-    <a href="../logout.php">Logout</a>
-    <table>
-        <tr>
-            <th>No</th>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Category</th>
-            <th>Quantity</th>
-            <th>Action</th>
-        </tr>
-        <?php foreach ($products as $product) : ?>
+    <div class="container mt-5 border rounded p-4">
+    <table class="table table-bordered table-hover">
+        <thead class="thead-dark">
             <tr>
-            <td><?= $product['id']; ?></td>
-            <td><?= $product['prod_name']; ?></td>
-            <td><?= $product['price']; ?></td>
-            <td><?= $product['category_name']; ?></td>
-            <td><?= $product['qty']; ?></td>
-            <td>
-                <a href="product_edit.php?id=<?= $product['id']; ?>">Edit</a>
-                <a href="product_delete.php?id=<?= $product['id']; ?>">Delete</a>
-            </td>
-        </tr>
-        <?php endforeach; ?>
+                <th scope="col">Number</th>
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Category</th>
+                <th scope="col">Quantity</th>
+            </tr>
+        </thead>
+    
+        <tbody>
+            <?php foreach ($products as $product) : ?>
+                <tr>
+                    <td><?= $product['id']; ?></td>
+                    <td><?= $product['prod_name']; ?></td>
+                    <td><?= $product['price']; ?></td>
+                    <td><?= $product['category_id']; ?></td>
+                    <td><?= $product['qty']; ?></td>
+                    <td>
+                        <a href="product_edit.php?id=<?= $product['id']; ?>" class="btn btn-primary btn-sm">Edit</a>
+                        <a href="product_delete.php?id=<?= $product['id']; ?>" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
     </table>
+</div>
     <?php include('includes/footer.php');

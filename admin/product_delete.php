@@ -1,12 +1,14 @@
 <?php
 include('includes/header.php');
+include('includes/navbar.php');
 
 session_start();
 if (!isset($_SESSION['username'])) {
     header('Location: login.php');
     exit;
 }
-include 'database/conn.php';
+include '../database/conn.php';
+
 include '../includes/functions.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id'])) {

@@ -1,5 +1,6 @@
 <?php
 include('includes/header.php');
+include('includes/navbar.php');
 
 session_start();
 if (!isset($_SESSION['username'])) {
@@ -14,39 +15,54 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $description = $_POST['description'];
     $price = $_POST['price'];
     $category_id = $_POST['category_id'];
-    $quantity=$_POST['qty'];
-
+    $quantity = $_POST['qty']; 
     // Perform validation here
 
-    $sql = "INSERT INTO products (prod_name, prod_desc, price, category_id,qty) 
-            VALUES ('$name', '$description', '$price', '$category_id','$quantity')";
+//   here we are using the prepared statement to prevent sql injection
+  $stmt = $conn->prepare("INSERT INTO products (prod_name, prod_desc, price, category_id, qty) VALUES (?, ?, ?, ?, ?)");
+  $stmt->bind_param("ssdsi", $name, $description, $price, $category_id, $quantity);
 
-    if ($conn->query($sql) === TRUE) {
-        header('Location: product_list.php');
-        exit;
-    } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
-    }
+  if ($stmt->execute()) { // Use execute() for prepared statements
+    // Redirect to the product list page
+    header('Location: product_list.php');
+    exit;
+} else {
+    echo "Error: " . $stmt->error;
+}
+     // Close the statement
+     $stmt->close();
 }
 ?>
 
-    <a href="product_list.php">Back to Product List</a>
-    <form method="post">
-        <label for="name">Name</label>
-        <input type="text" id="name" name="name" required>
-        <br>
-        <label for="description">Description</label>
-        <textarea id="description" name="description"></textarea>
-        <br>
-        <label for="price">Price</label>
-        <input type="text" id="price" name="price" required>
-        <br>
-        <label for="category_id">Category</label>
-       <input type="text" id="category_id" name="category_id" required>
-        <br>
-        <label for="quantity">Quantity</label>
-        <input type="number" id="quantity" name="quantity" required>
-        <br>
-        <input type="submit" value="Add Product">
-    </form>
+<div class="container-fluid mt-4">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-md-6 border p-4 rounded">
+            <form method="post">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" id="name" name="name" class="form-control p-2 " style="background-color: white; border: 1px solid #ced4da;" required>
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea id="description" name="description" class="form-control p-2"  style="background-color: white; border: 1px solid #ced4da;"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="price" class="form-label">Price</label>
+                    <input type="text" id="price" name="price" class="form-control p-2" style="background-color: white; border: 1px solid #ced4da;" required>
+                </div>
+                <div class="mb-3">
+                    <label for="category_id" class="form-label">Category</label>
+                    <input type="text" id="category_id" name="category_id" class="form-control p-2" style="background-color: white; border: 1px solid #ced4da;" required>
+                </div>
+                <div class="mb-3">
+                    <label for="quantity" class="form-label">Quantity</label>
+                    <input type="number" id="quantity" name="qty" class="form-control p-2" style="background-color: white; border: 1px solid #ced4da;" required>
+                </div>
+                <button type="submit" class="btn btn-dark">Add Product</button>
+                <a href="product_list.php" class="btn btn-secondary">Back to Product List</a>
+            </form>
+        </div>
+    </div>
+</div>
+
     <?php include('includes/footer.php');

@@ -1,7 +1,6 @@
-<footer class="py-5 bg-dark">
-            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p></div>
-        </footer>     
-       
-       </body>
-   </html>
+<footer class="footer fixed-bottom bg-dark text-light py-3">
+    <div class="container text-center">
+        <p class="mb-0">E-store capstone @copyright2023</p>
+    </div>
+</footer>
    

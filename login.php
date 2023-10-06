@@ -23,21 +23,39 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
-    <?php if (isset($login_error)) : ?>
-    <p><?= $login_error; ?></p>
+    <?php if (isset($login_error)): ?>
+        <p><?= $login_error; ?></p>
     <?php endif; ?>
-    <form method="post">
-        <label for="username">Username</label>
-        <input type="text" id="username" name="username" required>
-        <br>
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" required>
-        <br>
-        <input type="submit" value="Login">
-    </form>
-</body>
-</html>
+    <div class="container mt-5 mb-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form method="post" class="bg-light p-4 rounded border">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" id="username" name="username" required>
+                </div>
+                
+                <div class="form-group mb-4">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+                </div>
+                <div class="container mt-1">
+    <div class="alert alert-success" role="alert">
+    
+      
+        Admin101 <br> 101
+    </div>
+  </div>
+
+                <button type="submit" class="btn btn-success">Login</button>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
 
     <?php
-     include('includes/footer.php');?>
+    include('includes/footer.php'); ?>
 
