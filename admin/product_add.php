@@ -9,28 +9,30 @@ if (!isset($_SESSION['username'])) {
 }
 include '../database/conn.php';
 include '../includes/functions.php';
+// fetching  categories from the database
+$categoriesQuery = "SELECT id, category_name FROM categories";
+$categoriesResult = mysqli_query($conn, $categoriesQuery);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = $_POST['name'];
     $description = $_POST['description'];
     $price = $_POST['price'];
     $category_id = $_POST['category_id'];
-    $quantity = $_POST['qty']; 
-    // Perform validation here
+    $quantity = $_POST['qty'];
 
-//   here we are using the prepared statement to prevent sql injection
-  $stmt = $conn->prepare("INSERT INTO products (prod_name, prod_desc, price, category_id, qty) VALUES (?, ?, ?, ?, ?)");
-  $stmt->bind_param("ssdsi", $name, $description, $price, $category_id, $quantity);
+    //   here we are using the prepared statement to prevent sql injection
+    $stmt = $conn->prepare("INSERT INTO products (prod_name, prod_desc, price, category_id, qty) VALUES (?, ?, ?, ?, ?)");
+    $stmt->bind_param("ssdsi", $name, $description, $price, $category_id, $quantity);
 
-  if ($stmt->execute()) { // Use execute() for prepared statements
-    // Redirect to the product list page
-    header('Location: product_list.php');
-    exit;
-} else {
-    echo "Error: " . $stmt->error;
-}
-     // Close the statement
-     $stmt->close();
+    if ($stmt->execute()) { // we are using execute() for prepared statements
+        // after we are redirecting it to product list page
+        header('Location: product_list.php');
+        exit;
+    } else {
+        echo "Error: " . $stmt->error;
+    }
+    // Closing here
+    $stmt->close();
 }
 ?>
 
@@ -51,13 +53,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <input type="text" id="price" name="price" class="form-control p-2" style="background-color: white; border: 1px solid #ced4da;" required>
                 </div>
                 <div class="mb-3">
-                    <label for="category_id" class="form-label">Category</label>
-                    <input type="text" id="category_id" name="category_id" class="form-control p-2" style="background-color: white; border: 1px solid #ced4da;" required>
-                </div>
-                <div class="mb-3">
                     <label for="quantity" class="form-label">Quantity</label>
                     <input type="number" id="quantity" name="qty" class="form-control p-2" style="background-color: white; border: 1px solid #ced4da;" required>
                 </div>
+                <div class="mb-3">
+                    <label for="category_id" class="form-label">Category</label>
+                    <select id="category_id" name="category_id" class="form-control p-2" style="background-color: white; border: 1px solid #ced4da;" required>
+                      <?php
+                      // Here we are defining the order of category
+                      $categoryOrder = array("mobile", "PC Desktop", "Laptop", "Tablet");
+
+                      // here we are create an associative array to map category_name IDs
+                      $categoryMap = array();
+                      while ($row = mysqli_fetch_assoc($categoriesResult)) {
+                          $categoryMap[$row['category_name']] = $row['id'];
+                      }
+
+                      foreach ($categoryOrder as $categoryName) {
+                          // here are checking if the category exists in mapping
+                          if (isset($categoryMap[$categoryName])) {
+                              $categoryId = $categoryMap[$categoryName];
+                              echo "<option value='$categoryId'>$categoryName</option>";
+                          }
+                      }
+                      ?>
+                     </select>
+                 </div>
                 <button type="submit" class="btn btn-dark">Add Product</button>
                 <a href="product_list.php" class="btn btn-secondary">Back to Product List</a>
             </form>

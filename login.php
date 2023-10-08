@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    // Perform user authentication here (e.g., check credentials against the database)
+    // here we are dong the user authentication 
     $sql = "SELECT * FROM user WHERE UserName = '$username' AND Password = '$password'";
     $result = $conn->query($sql);
 
@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 
     <?php if (isset($login_error)): ?>
-        <p><?= $login_error; ?></p>
+            <p><?= $login_error; ?></p>
     <?php endif; ?>
     <div class="container mt-5 mb-4">
     <div class="row justify-content-center">

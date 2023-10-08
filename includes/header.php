@@ -7,12 +7,10 @@
         <meta name="author" content="" />
         <title>Shop Homepage</title>
       
-        <!-- Bootstrap icons-->
         <link href="assets/css/bootstrapicon.css" rel="stylesheet" />
               
-        <!-- Bootstrap css-->
         <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
-       
+        <link rel="stylesheet" href="customestyle.css">
         <link href="css/styles.css" rel="stylesheet" />
     </head>
     <body>

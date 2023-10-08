@@ -34,13 +34,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 } else {
     $id = $_GET['id'];
     $product = get_product_by_id($conn, $id);
-    if (!$product) {
+    if (!$product || !array_key_exists('id', $product)) {
         echo "Product not found.";
         exit;
     }
 }
 ?>
-<div class="container mt-5">
+<div class="container mt-5 mb-">
     <div class="row justify-content-center">
         <div class="col-md-6">
             <form method="post" class="bg-light p-4 rounded border">
@@ -66,26 +66,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <input type="text" class="form-control custom-input p-2" id="category_id" name="category_id" value="<?= $product['category_id']; ?>" required>
                 </div>
 
-                <div class="form-group mb-3">
-                    <label for="quantity">Quantity</label>
-                    <input type="number" class="form-control custom-input p-2" id="qty" name="quantity" value="<?= $product['qty']; ?>" required>
-                </div>
-
-                <button type="submit" class="btn btn-dark">Update Product</button>
-                <a href="product_list.php" class="btn btn-secondary">Back to Product List</a>
+                <button type="submit" class="btn btn-dark mt-3">Update Product</button>
+                <a href="product_list.php" class="btn btn-secondary mt-3">Back to Product List</a>
             </form>
         </div>
     </div>
 </div>
-
+<!-- here we have some custom css for better styling -->
 <style>
     .custom-input {
         background-color: white;
-        border: 1px solid #ced4da; /* Bootstrap default border color */
+        border: 1px solid #ced4da;
     }
 
     .custom-input:hover {
-        border: 1px solid #6c757d; /* Bootstrap default border color for hover state */
+        border: 1px solid #6c757d;
     }
 </style>
 

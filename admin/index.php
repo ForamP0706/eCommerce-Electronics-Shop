@@ -11,6 +11,7 @@ include '../database/conn.php';
 include '../includes/functions.php';
 $products = get_products($conn);
 ?>
+
    <div class="container">
     <div class="row justify-content-center align-items-center my-5">
         <div class="col-md-5 text-center border p-4 rounded shadow">
