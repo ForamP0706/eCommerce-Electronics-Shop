@@ -16,11 +16,12 @@ Electronic Ecommerce Website
   <script src="../assets/js/bootstrap.bundle.min.js"></script>
 <script src="../assets/js/perfect-scrollbar.min.js"></script>
   <script src="../assets/js/smooth-scrollbar.min.js"></script>
+  
   <!-- Material Icons -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
   <!-- CSS Files -->
   <link id="pagestyle" href="assets/css/material-dashboard.min.css" rel="stylesheet" />
- 
+ <link rel="stylesheet" href="customstyle.css">
 </head>
 
 <body class="g-sidenav-show  bg-gray-200">
