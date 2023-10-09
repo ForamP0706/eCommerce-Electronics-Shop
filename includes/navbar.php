@@ -12,7 +12,9 @@
                         <li class="nav-item">
                         <a href="" class="nav-link text-muted" target="">AboutUs</a>
                         </li><li class="nav-item">
-                       <a href="../login.php" class="nav-link text-muted" target="">Login</a>
+                       <a href="login.php" class="nav-link text-muted" target="">Login</a></li>
+                       <li class="nav-item">
+                       <a href="register.php" class="nav-link text-muted" target="">Signup</a></li>
                     </ul>
                     <form class="d-flex">
                         <button class="btn btn-outline-dark" type="submit">

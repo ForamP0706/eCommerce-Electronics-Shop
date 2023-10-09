@@ -8,6 +8,8 @@ include 'database/conn.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
+    $role = $_POST['role'];
+    if ($role === 'admin'){
 
     // here we are dong the user authentication 
     $sql = "SELECT * FROM user WHERE UserName = '$username' AND Password = '$password'";
@@ -21,6 +23,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $login_error = "Invalid username or password.";
     }
 }
+elseif ($role === 'user'){
+
+    // here we are dong the user authentication 
+    $sql = "SELECT * FROM customer WHERE email = '$username' AND password = '$password'";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows == 1) {
+        $_SESSION['username'] = $username;
+        header('Location: index.php');
+        exit;
+    } else {
+        $login_error = "Invalid username or password.";
+    }
+}
+}
 ?>
 
     <?php if (isset($login_error)): ?>
@@ -31,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="col-md-6">
             <form method="post" class="bg-light p-4 rounded border">
                 <div class="form-group">
-                    <label for="username">Username</label>
+                    <label for="username">Username/Email </label>
                     <input type="text" class="form-control" id="username" name="username" required>
                 </div>
                 
@@ -39,12 +56,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <label for="password">Password</label>
                     <input type="password" class="form-control" id="password" name="password" required>
                 </div>
+                <div class="form-group mb-4">
+                <label for="role">Role:</label>
+        <select id="role" name="role">
+            <option value="admin">Admin</option>
+            <option value="user">User</option>
+        </select>
+    </div>
                 <div class="container mt-1">
-    <div class="alert alert-success" role="alert">
+    <!-- <div class="alert alert-success" role="alert">
     
       
         Admin101 <br> 101
-    </div>
+    </div> -->
   </div>
 
                 <button type="submit" class="btn btn-success">Login</button>
