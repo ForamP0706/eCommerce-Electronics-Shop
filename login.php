@@ -1,5 +1,5 @@
-<?php include('includes/header.php');
-include('includes/navbar.php');
+<?php include 'includes/header.php';
+include 'includes/navbar.php';
 ?>
 <?php
 session_start();
@@ -9,41 +9,49 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
     $role = $_POST['role'];
-    if ($role === 'admin'){
 
-    // here we are dong the user authentication 
-    $sql = "SELECT * FROM user WHERE UserName = '$username' AND Password = '$password'";
-    $result = $conn->query($sql);
+    if ($role === 'admin') {
+        // here we are dong the user authentication
+        $sql = "SELECT * FROM user WHERE UserName = ?";
+        $result = $conn->query($sql);
 
-    if ($result->num_rows == 1) {
-        $_SESSION['username'] = $username;
-        header('Location: admin/index.php');
-        exit;
-    } else {
-        $login_error = "Invalid username or password.";
+        if ($result->num_rows == 1) {
+            $_SESSION['username'] = $username;
+            header('Location: admin/index.php');
+            exit;
+        } else {
+            $login_error = "Invalid username or password.";
+        }
+    } elseif ($role === 'user') {
+
+        // here we are dong the user authentication
+        $sql = "SELECT * FROM customer WHERE email = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param('s', $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($result->num_rows == 1) {
+            $row = $result->fetch_assoc();
+
+            // here we are Verifying the entered password against hashed password
+            if (password_verify($password, $row['password'])) {
+                $_SESSION['username'] = $username;
+                header('Location: index.php');
+                exit;
+            } else {
+                $login_error = "Invalid username or password.";
+            }
+        } else {
+            $login_error = "Invalid username or password.";
+        }
     }
-}
-elseif ($role === 'user'){
-
-    // here we are dong the user authentication 
-    $sql = "SELECT * FROM customer WHERE email = '$username' AND password = '$password'";
-    $result = $conn->query($sql);
-
-    if ($result->num_rows == 1) {
-        $_SESSION['username'] = $username;
-        header('Location: index.php');
-        exit;
-    } else {
-        $login_error = "Invalid username or password.";
-    }
-}
 }
 ?>
 
-    <?php if (isset($login_error)): ?>
-            <p><?= $login_error; ?></p>
-    <?php endif; ?>
-    <div class="container mt-5 mb-4">
+<?php if (isset($login_error)) : ?>
+    <p><?= $login_error; ?></p>
+<?php endif; ?>
+<div class="container mt-5 mb-4">
     <div class="row justify-content-center">
         <div class="col-md-6">
             <form method="post" class="bg-light p-4 rounded border">
@@ -51,26 +59,20 @@ elseif ($role === 'user'){
                     <label for="username">Username/Email </label>
                     <input type="text" class="form-control" id="username" name="username" required>
                 </div>
-                
+
                 <div class="form-group mb-4">
                     <label for="password">Password</label>
                     <input type="password" class="form-control" id="password" name="password" required>
                 </div>
                 <div class="form-group mb-4">
-                <label for="role">Role:</label>
-        <select id="role" name="role">
-            <option value="admin">Admin</option>
-            <option value="user">User</option>
-        </select>
-    </div>
+                    <label for="role">Role:</label>
+                    <select id="role" name="role">
+                        <option value="admin">Admin</option>
+                        <option value="user">User</option>
+                    </select>
+                </div>
                 <div class="container mt-1">
-    <!-- <div class="alert alert-success" role="alert">
-    
-      
-        Admin101 <br> 101
-    </div> -->
-  </div>
-
+                </div>
                 <button type="submit" class="btn btn-success">Login</button>
             </form>
 
@@ -80,6 +82,5 @@ elseif ($role === 'user'){
 
 
 
-    <?php
-    include('includes/footer.php'); ?>
-
+<?php
+include 'includes/footer.php'; ?>

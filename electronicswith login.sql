@@ -56,7 +56,7 @@ INSERT INTO `categories` (`id`, `category_name`, `category_slug`, `category_pare
 --
 
 CREATE TABLE `customer` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `first_name` varchar(50) NOT NULL,
   `last_name` varchar(50) NOT NULL,
   `email` varchar(100) NOT NULL,
@@ -66,7 +66,8 @@ CREATE TABLE `customer` (
   `unit_number` varchar(20) DEFAULT NULL,
   `city` varchar(50) NOT NULL,
   `province` varchar(50) NOT NULL,
-  `zip` varchar(10) NOT NULL
+  `zip` varchar(10) NOT NULL,
+  PRIMARY KEY (`id`) 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
