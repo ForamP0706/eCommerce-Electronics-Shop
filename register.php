@@ -3,64 +3,62 @@ include('includes/navbar.php');
 ?>
 <?php
 session_start();
-
-
-// Define variables to store user input
+// here we are defining variables to store user input
 $firstName = $lastName = $email = $password = $repassword = $phone = $address1 = $city = $province = $zip = '';
-// Define error variables to store validation errors
+//here we are defining error variables to store validation errors........
 $firstNameErr = $lastNameErr = $emailErr = $passwordErr = $repasswordErr = $phoneErr = $address1Err = $unitNumberErr = $cityErr = $provinceErr = $zipErr = '';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   $unitNumber = $_POST["unitnumber"];
-  // Validate First Name
+  // here are Validating first name
   if (empty($_POST["fname"])) {
     $firstNameErr = "First Name is required";
   } else {
     $firstName = test_input($_POST["fname"]);
 
-    // Check if name only contains letters and whitespace
+    // here we are Checking if name only contains letters and whitespace
     if (!preg_match("/^[a-zA-Z ]*$/", $firstName)) {
       $firstNameErr = "Only letters and white space allowed";
     }
   }
 
-  // Validate Last Name
+  // here we are Validating last Name
   if (empty($_POST["lname"])) {
     $lastNameErr = "Last Name is required";
   } else {
     $lastName = test_input($_POST["lname"]);
 
-    // Check if name only contains letters and whitespace
+    // here we are Checking if name only contains letters and whitespace.......
     if (!preg_match("/^[a-zA-Z ]*$/", $lastName)) {
       $lastNameErr = "Only letters and white space allowed";
     }
   }
 
-  // Validate Email
+  // here we are Validating the Email
   if (empty($_POST["uemail"])) {
     $emailErr = "Email is required";
   } else {
     $email = test_input($_POST["uemail"]);
 
-    // Check if email address is well-formed
+    // here we have if statement for email correct format
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
       $emailErr = "Invalid email format";
     }
   }
 
-  // Validate Password
+  // here we are Validating Password
   if (empty($_POST["upassword"])) {
     $passwordErr = "Password is required";
   } else {
     $password = test_input($_POST["upassword"]);
-    // Hash the password securely
+    // adding the Hashing password
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
   }
 
 
-  //  $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-  // Validate Confirm Password
+
+  // here we are Validating Confirm Password
   if (empty($_POST["reupassword"])) {
     $repasswordErr = "Please confirm your password";
   } else {
@@ -70,8 +68,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $repasswordErr = "Passwords do not match";
     }
   }
-  // $password = $_POST["upassword"];
-  // Validate Phone Number
+
+  // here we are validating Phone Number
   if (!empty($_POST["phone"])) {
     $phone = test_input($_POST["phone"]);
 
@@ -122,7 +120,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 
-// Function to sanitize and validate input data
+// here we have function to sanitize and validate input data
 function test_input($data)
 {
   $data = trim($data);
@@ -131,7 +129,6 @@ function test_input($data)
   return $data;
 }
 ?>
-
 
 <div class="container mt-4 mb-4">
   <div class="row justify-content-center">
