@@ -85,6 +85,7 @@ INSERT INTO `products` (`id`, `prod_name`, `prod_desc`, `prod_img`, `price`, `qt
 
 -- --------------------------------------------------------
 
+
 --
 -- Table structure for table `user`
 --

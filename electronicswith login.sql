@@ -36,16 +36,20 @@ CREATE TABLE `categories` (
   `active` tinyint(1) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `categories`
 --
 
 INSERT INTO `categories` (`id`, `category_name`, `category_slug`, `category_parent`, `category_position`, `active`, `created_at`, `updated_at`) VALUES
-(1, 'mobile', 'wer', 'smartphone', 1, 1, '2023-10-05 20:33:16', '2023-10-05 20:33:16');
+(1, 'mobile', 'Mobile', 'smartphone', 1, 1, '2023-10-05 20:33:16', '2023-10-05 20:33:16'),
+(2, 'PC Desktop', 'pc-desktop', '', 2, 1, '2023-10-06 00:35:00', '2023-10-06 00:35:00'),
+(3, 'Laptop', 'laptop', '', 3, 1, '2023-10-06 00:36:00', '2023-10-06 00:36:00'),
+(4, 'Tablet', 'tablet', '', 4, 1, '2023-10-06 00:37:00', '2023-10-06 00:37:00');
 
 -- --------------------------------------------------------
+
 
 --
 -- Table structure for table `customer`
