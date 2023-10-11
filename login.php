@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $role = $_POST['role'];
 
     if ($role === 'admin') {
-        // here we are dong the user authentication
+    
         $sql = "SELECT * FROM user WHERE UserName = ?";
         $result = $conn->query($sql);
 
@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     } elseif ($role === 'user') {
 
-        // here we are dong the user authentication
+    
         $sql = "SELECT * FROM customer WHERE email = ?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param('s', $username);
@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($result->num_rows == 1) {
             $row = $result->fetch_assoc();
 
-            // here we are Verifying the entered password against hashed password
+   
             if (password_verify($password, $row['password'])) {
                 $_SESSION['username'] = $username;
                 header('Location: index.php');

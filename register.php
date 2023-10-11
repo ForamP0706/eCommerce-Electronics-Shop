@@ -3,62 +3,61 @@ include('includes/navbar.php');
 ?>
 <?php
 session_start();
-// here we are defining variables to store user input
+
 $firstName = $lastName = $email = $password = $repassword = $phone = $address1 = $city = $province = $zip = '';
-//here we are defining error variables to store validation errors........
+
 $firstNameErr = $lastNameErr = $emailErr = $passwordErr = $repasswordErr = $phoneErr = $address1Err = $unitNumberErr = $cityErr = $provinceErr = $zipErr = '';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   $unitNumber = $_POST["unitnumber"];
-  // here are Validating first name
+
   if (empty($_POST["fname"])) {
     $firstNameErr = "First Name is required";
   } else {
     $firstName = test_input($_POST["fname"]);
 
-    // here we are Checking if name only contains letters and whitespace
     if (!preg_match("/^[a-zA-Z ]*$/", $firstName)) {
       $firstNameErr = "Only letters and white space allowed";
     }
   }
 
-  // here we are Validating last Name
+
   if (empty($_POST["lname"])) {
     $lastNameErr = "Last Name is required";
   } else {
     $lastName = test_input($_POST["lname"]);
 
-    // here we are Checking if name only contains letters and whitespace.......
+    
     if (!preg_match("/^[a-zA-Z ]*$/", $lastName)) {
       $lastNameErr = "Only letters and white space allowed";
     }
   }
 
-  // here we are Validating the Email
+  
   if (empty($_POST["uemail"])) {
     $emailErr = "Email is required";
   } else {
     $email = test_input($_POST["uemail"]);
 
-    // here we have if statement for email correct format
+    
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
       $emailErr = "Invalid email format";
     }
   }
 
-  // here we are Validating Password
+  
   if (empty($_POST["upassword"])) {
     $passwordErr = "Password is required";
   } else {
     $password = test_input($_POST["upassword"]);
-    // adding the Hashing password
+  
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
   }
 
 
 
-  // here we are Validating Confirm Password
+  
   if (empty($_POST["reupassword"])) {
     $repasswordErr = "Please confirm your password";
   } else {
@@ -69,7 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
   }
 
-  // here we are validating Phone Number
+  
   if (!empty($_POST["phone"])) {
     $phone = test_input($_POST["phone"]);
 
@@ -78,21 +77,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
   }
 
-  // Validate Address
+
   if (!empty($_POST["address1"])) {
     $address1 = test_input($_POST["address1"]);
   }
-  // Validate city
+
   if (!empty($_POST["inputCity"])) {
     $city = test_input($_POST["inputCity"]);
   }
 
-  // Validate Province
+  
   if (!empty($_POST["province"])) {
     $province = test_input($_POST["province"]);
   }
 
-  // Validate Zip Code
+ 
   if (!empty($_POST["inputZip"])) {
     $zip = test_input($_POST["inputZip"]);
 
@@ -120,7 +119,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 
-// here we have function to sanitize and validate input data
+
 function test_input($data)
 {
   $data = trim($data);
