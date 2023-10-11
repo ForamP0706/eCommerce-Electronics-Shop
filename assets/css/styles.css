@@ -1,3 +1,10 @@
+:root {
+  --bs-primary-color: #0050f0;
+}
+
+.bg-primary {
+  background: var(--bs-primary-color);
+}
 
 .login-box {
   width: 280px;
@@ -5,13 +12,13 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: #191970;
+  color: var(--bs-primary-color);
 }
 
 .login-box h1 {
   float: left;
   font-size: 40px;
-  border-bottom: 4px solid #191970;
+  border-bottom: 4px solid var(--bs-primary-color);
   margin-bottom: 50px;
   padding: 13px;
 }
@@ -22,7 +29,7 @@
   font-size: 20px;
   padding: 8px 0;
   margin: 8px 0;
-  border-bottom: 1px solid #191970;
+  border-bottom: 1px solid var(--bs-primary-color);
 }
 
 .fa {
@@ -44,7 +51,7 @@
   width: 100%;
   padding: 8px;
   color: #ffffff;
-  background: none #191970;
+  background: none var(--primary_100);
   border: none;
   border-radius: 6px;
   font-size: 18px;
@@ -3827,7 +3834,7 @@ textarea.form-control-lg {
   padding-bottom: var(--bs-navbar-brand-padding-y);
   margin-right: var(--bs-navbar-brand-margin-end);
   font-size: var(--bs-navbar-brand-font-size);
-  color: var(--bs-navbar-brand-color);
+  color: var(--bs-primary-color);
   text-decoration: none;
   white-space: nowrap;
 }
