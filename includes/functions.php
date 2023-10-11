@@ -28,7 +28,7 @@ function get_product_by_id($conn, $id) {
         return false;
     }
 }
-//done
+
 function get_category_by_id($conn, $id) {
     $sql = "SELECT * 
             FROM categories             
