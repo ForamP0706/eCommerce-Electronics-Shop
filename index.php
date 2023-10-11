@@ -16,13 +16,13 @@ include('includes/navbar.php');
         <div id="carouselExampleSlides" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                <img class="d-block w-100" src="https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L3JtMjE4YmF0Y2gxMC1teW50LTEyLmpwZw.jpg" alt="First slide">
+                <img class="d-block w-100" src="assets/images/business-online-shopping-sale-concept.jpg" alt="First slide">
                 </div>
                 <div class="carousel-item">
-                <img class="d-block w-100" src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg" alt="Second slide">
+                <img class="d-block w-100" src="assets/images/laptop-shopping-bags-online-shopping-concept.jpg" alt="Second slide">
                 </div>
                 <div class="carousel-item">
-                <img class="d-block w-100" src="https://cdn.pixabay.com/photo/2014/02/27/16/10/flowers-276014_1280.jpg" alt="Third slide">
+                <img class="d-block w-100" src="assets/images/purchasing-shop-buying-selling-teade.jpg" alt="Third slide">
                 </div>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleSlides" role="button" data-slide="prev">
@@ -44,16 +44,16 @@ include('includes/navbar.php');
                 </div>
                 <div class="row">
                 <div class="col-md-3">
-                        <img class="w-100" src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg" alt="seller">
+                        <img class="w-100" src="assets/images/AWS7.jpg" alt="seller">
                     </div>
                     <div class="col-md-3">
-                        <img class="w-100" src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg" alt="seller">
+                        <img class="w-100" src="assets/images/B1C35.jpg" alt="seller">
                     </div>
                     <div class="col-md-3">
-                        <img class="w-100" src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg" alt="seller">
+                        <img class="w-100" src="assets/images/BSR+.jpg" alt="seller">
                     </div>
                     <div class="col-md-3">
-                        <img class="w-100" src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg" alt="seller">
+                        <img class="w-100" src="assets/images/CER6.jpg" alt="seller">
                     </div>
                 </div>
             </div>
