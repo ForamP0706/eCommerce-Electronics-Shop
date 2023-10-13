@@ -29,7 +29,7 @@
                     <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
                 </button>
             
-                    <p class="lead fs-4">Hello, <?php echo $_SESSION['username']; ?>!</p>
+        
                 
             </form>
         </div>
