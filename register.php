@@ -157,7 +157,7 @@ function test_input($data)
 
         <div class="form-group">
           <label for="reupassword">Confirm Password</label>
-          <input type="password" class="form-control" id="reupassword" placeholder="reupassword" name="reupassword">
+          <input type="password" class="form-control" id="reupassword" placeholder="confirmpassword" name="reupassword">
           <span class="error"><?php echo $repasswordErr; ?></span>
         </div>
         <div class="form-group">

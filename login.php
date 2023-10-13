@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($role === 'admin') {
     
-        $sql = "SELECT * FROM user WHERE UserName = ?";
+        $sql = "SELECT * FROM user WHERE UserName ='$username' AND Password = '$password'";
         $result = $conn->query($sql);
 
         if ($result->num_rows == 1) {
@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($result->num_rows == 1) {
             $row = $result->fetch_assoc();
 
-   
+            // here we are Verifying the entered password against hashed password
             if (password_verify($password, $row['password'])) {
                 $_SESSION['username'] = $username;
                 header('Location: index.php');

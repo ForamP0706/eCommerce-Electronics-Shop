@@ -20,6 +20,7 @@
                 <li class aoda="nav-item">
                     <a href="register.php" class="nav-link text-muted" target="" style="color: #aoda;">Signup</a>
                 </li>
+                
             </ul>
             <form class="d-flex">
                 <button class="btn btn-outline-dark" type="submit">
@@ -27,6 +28,9 @@
                     Cart
                     <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
                 </button>
+            
+                    <p class="lead fs-4">Hello, <?php echo $_SESSION['username']; ?>!</p>
+                
             </form>
         </div>
     </div>
