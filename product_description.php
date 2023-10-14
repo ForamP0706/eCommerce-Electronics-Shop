@@ -1,12 +1,21 @@
 <?php include('includes/header.php');
 include('includes/navbar.php');
 if(isset($_GET['id']))
-$id=htmlspecialchars($_GET['id']);
-else
-$pid=1;
-$stmt = $pdo->prepare("SELECT * FROM products WHERE id=:pid");
-$stmt->execute(['id' => $pid]); 
-$product = $stmt->fetch();
+if (isset($_GET['id'])) {
+   
+    // Retrieve product information from the database
+    $stmt = $conn->prepare("SELECT * FROM products WHERE id = ?");
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $product = $result->fetch_assoc();
+
+    if (!$product) {
+        die("Product not found.");
+    }
+} else {
+    die("Product ID not provided.");
+}
 ?>
  <style>
             .error {
