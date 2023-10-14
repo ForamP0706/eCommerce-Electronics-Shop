@@ -19,6 +19,9 @@
                     <a href="product_list.php" class="nav-link text-dark">View Products</a>
                 </li>
                 <li class="nav-item">
+                    <a href="add_category.php" class="nav-link text-dark">New Category</a>
+                </li>
+                <li class="nav-item">
                     <span class="nav-link text-muted">|</span>
                 </li>
                 <li class="nav-item">

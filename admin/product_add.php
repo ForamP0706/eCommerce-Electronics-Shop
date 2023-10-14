@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
                 <div class="mb-3">
                     <label for="description" class="form-label">Description</label>
-                    <textarea id="description" name="description" class="form-control p-2"  style="background-color: white; border: 1px solid #ced4da;"></textarea>
+                    <textarea id="description" name="description" class="form-control p-2" style="background-color: white; border: 1px solid #ced4da;"></textarea>
                 </div>
                 <div class="mb-3">
                     <label for="price" class="form-label">Price</label>
@@ -59,26 +59,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="mb-3">
                     <label for="category_id" class="form-label">Category</label>
                     <select id="category_id" name="category_id" class="form-control p-2" style="background-color: white; border: 1px solid #ced4da;" required>
-                      <?php
-                      // Here we are defining the order of category
-                      $categoryOrder = array("mobile", "PC Desktop", "Laptop", "Tablet");
-
-                      // here we are create an associative array to map category_name IDs
-                      $categoryMap = array();
-                      while ($row = mysqli_fetch_assoc($categoriesResult)) {
-                          $categoryMap[$row['category_name']] = $row['id'];
-                      }
-
-                      foreach ($categoryOrder as $categoryName) {
-                          // here are checking if the category exists in mapping
-                          if (isset($categoryMap[$categoryName])) {
-                              $categoryId = $categoryMap[$categoryName];
-                              echo "<option value='$categoryId'>$categoryName</option>";
-                          }
-                      }
-                      ?>
-                     </select>
-                 </div>
+                        <?php
+                        while ($row = mysqli_fetch_assoc($categoriesResult)) {
+                            echo "<option value='{$row['id']}'>{$row['category_name']}</option>";
+                        }
+                        ?>
+                    </select>
+                </div>
                 <button type="submit" class="btn btn-dark">Add Product</button>
                 <a href="product_list.php" class="btn btn-secondary">Back to Product List</a>
             </form>
@@ -86,4 +73,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
 </div>
 
-    <?php include('includes/footer.php');
+<?php include('includes/footer.php');
