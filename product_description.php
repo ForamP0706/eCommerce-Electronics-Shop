@@ -1,6 +1,7 @@
 <?php include('includes/header.php');
 include('includes/navbar.php');
-if(isset($_GET['id']))
+include('database/conn.php');
+
 if (isset($_GET['id'])) {
    
     // Retrieve product information from the database
