@@ -11,8 +11,13 @@ include('includes/navbar.php');
                 </div>
             </div>
         </header>
-    
+        
         <section class="container">
+        <div class="row">
+                    <div class="col-md-12">
+                    <h1 style="color: black; font-weight: bold; text-align: center;">BANNER</h1>
+                    </div>
+                </div>
         <div id="carouselExampleSlides" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">

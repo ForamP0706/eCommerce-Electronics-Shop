@@ -2,7 +2,6 @@
 include 'includes/navbar.php';
 ?>
 <?php
-session_start();
 include 'database/conn.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

@@ -1,9 +1,12 @@
 :root {
-  --bs-primary-color: #0050f0;
+  --bs-primary-color: #007bff;
 }
 
 .bg-primary {
   background: var(--bs-primary-color);
+}
+.text-white {
+  color: white!important;
 }
 
 .login-box {
