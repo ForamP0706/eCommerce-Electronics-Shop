@@ -15,7 +15,7 @@ include('includes/navbar.php');
         <section class="container">
         <div class="row">
                     <div class="col-md-12" style="margin-top: 35px; margin-bottom: 25px;" >
-                  <!--  <h1 style="color: black; font-weight: bold; text-align: center;">BANNER</h1>-->
+                  <!--  <h1 style="color: black; font-weight: bold; text-align: center;"> BANNER</h1> -->
                     </div>
                 </div>
         <div id="carouselExampleSlides" class="carousel slide" data-ride="carousel">
