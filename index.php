@@ -14,8 +14,8 @@ include('includes/navbar.php');
         
         <section class="container">
         <div class="row">
-                    <div class="col-md-12">
-                    <h1 style="color: black; font-weight: bold; text-align: center;">BANNER</h1>
+                    <div class="col-md-12" style="margin-top: 35px; margin-bottom: 25px;" >
+                  <!--  <h1 style="color: black; font-weight: bold; text-align: center;">BANNER</h1>-->
                     </div>
                 </div>
         <div id="carouselExampleSlides" class="carousel slide" data-ride="carousel">
@@ -67,7 +67,7 @@ include('includes/navbar.php');
     <div class="container px-4 px-lg-5 mt-5">
         <div class="row">
             <div class="col-md-12">
-                <h3>All Products</h3>
+                <h3>Mobiles</h3>
             </div>
         </div>
         <div class="row">

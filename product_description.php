@@ -1,59 +1,46 @@
-<?php include('includes/header.php');
+<?php
+include('includes/header.php');
 include('includes/navbar.php');
-include('database/conn.php');
 
-if (isset($_GET['id'])) {
-   
-    // Retrieve product information from the database
-    $stmt = $conn->prepare("SELECT * FROM products WHERE id = ?");
-    $stmt->bind_param("i", $id);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $product = $result->fetch_assoc();
+if (isset($_GET['product_id'])) {
 
-    if (!$product) {
-        die("Product not found.");
+    $product_id = $_GET['product_id'];
+    $product_query = "SELECT * FROM products WHERE id = $product_id";
+    $product_result = $conn->query($product_query);
+
+    if ($product_result->num_rows > 0) {
+        $product = $product_result->fetch_assoc();
+     
+        ?>
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="assets/images/products/<?php echo $product['prod_img']; ?>" alt="<?php echo $product['prod_name']; ?>" class="img-fluid">
+                </div>
+                <div class="col-md-6">
+                    <h1><?php echo $product['prod_name']; ?></h1>
+                    <p>Price: $<?php echo $product['price']; ?></p>
+                    <p><?php echo $product['prod_desc']; ?></p>
+                    
+              
+                    <form method="post" action="cart.php">
+                        <input type="hidden" name="product_id" value="<?php echo $product['id']; ?>">
+                        <div class="form-group">
+                            <label for="quantity">Quantity:</label>
+                            <input type="number" name="quantity" id="quantity" value="1" min="1">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <?php
+    } else {
+        echo "Product not found.";
     }
 } else {
-    die("Product ID not provided.");
+    echo "Product ID not provided.";
 }
-?>
- <style>
-            .error {
-                color:red;
-            }
 
-            .product{
-              gap:10px;
-              margin-top:4px;
-              margin-bottom:4px;
-            }
-            
-            .product-content{
-                display: flex;
-                flex-direction: column;
-                place-content: center;
-            }
-        </style>
-        <div class="product">
-                <div class="product-image">
-                    <img src="Images/<?php echo $product['prod_img']
-                    ?>" alt="Product Image"  >
-                </div>
-                <div class="product-content">
-                    <h2> <?php echo $product['prod_name']
-                    ?> </h2>
-                    <p> <?php echo $product['prod_desc']
-                    ?>
-                </p>
-                <h3> <?php echo $product['price']." CAD"; ?>  </h3>
-                <div>
-                  <form method='get'>
-                    <input type='hidden' value='<?php echo $id ?>' name='product_id'>
-                <button type='submit' class=" my-3" > Add to cart </button> 
-                </form>
-               </div>   
-                </div>
-        </div>        
-        <?php
-include('includes/footer.php');?>
+include('includes/footer.php');
+?>
