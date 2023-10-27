@@ -23,13 +23,14 @@ if (isset($_GET['product_id'])) {
                     <p><?php echo $product['prod_desc']; ?></p>
                     
               
-                    <form method="post" action="cart.php">
+                    <form method="post" action="add_cart.php">
                         <input type="hidden" name="product_id" value="<?php echo $product['id']; ?>">
                         <div class="form-group">
                             <label for="quantity">Quantity:</label>
-                            <input type="number" name="quantity" id="quantity" value="1" min="1">
+                            <input type="number" name="quantity" id="quantity" value="1">
                         </div>
                         <button type="submit" class="btn btn-primary">Add to Cart</button>
+                        <a href="shop.php" class="btn btn-secondary">Continue Shopping</a>
                     </form>
                 </div>
             </div>

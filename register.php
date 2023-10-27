@@ -2,7 +2,7 @@
 include('includes/navbar.php');
 ?>
 <?php
-session_start();
+
 
 $firstName = $lastName = $email = $password = $repassword = $phone = $address1 = $city = $province = $zip = '';
 

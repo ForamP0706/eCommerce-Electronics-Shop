@@ -4,6 +4,29 @@ include('includes/functions.php');
 
 $categories = get_categories($conn);
 $baseUrl = "/eCommerce-Electronics-Shop";
+
+// Initialize the cart array in the session if it doesn't exist
+if (!isset($_SESSION['cart'])) {
+    $_SESSION['cart'] = array();
+}
+
+// Add a product to the cart
+if (isset($_POST['add_to_cart']) && isset($_POST['product_id'])) {
+    $product_id = $_POST['product_id'];
+    $quantity = isset($_POST['quantity']) ? intval($_POST['quantity']) : 1;
+
+    // Check if the product is already in the cart
+    if (array_key_exists($product_id, $_SESSION['cart'])) {
+        // Increment the quantity if the product is already in the cart
+        $_SESSION['cart'][$product_id] += $quantity;
+    } else {
+        // Add the product to the cart with the given quantity
+        $_SESSION['cart'][$product_id] = $quantity;
+    }
+}
+
+// Calculate the total number of items in the cart
+$cartItemCount = array_sum($_SESSION['cart']);
 ?>
 <style>
     .navbar-nav {
@@ -76,16 +99,15 @@ $baseUrl = "/eCommerce-Electronics-Shop";
                 </li>
                 <?php } ?>
             </ul>
-            <form class="d-flex">
-                <button class="btn border-white text-white" type="submit">
-                    <i class="bi-cart-fill me-1"></i>
-                    Cart
-                    <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-                </button>
-            
-        
-                
-            </form>
+            <form class="d-flex" action="view_cart.php" method="get">
+    <button class="btn border-white text-white" type="submit">
+        <i class="bi-cart-fill me-1"></i>
+        Cart
+        <span class="badge bg-dark text-white ms-1 rounded-pill">
+            <?php echo $cartItemCount; ?>
+        </span>
+    </button>
+</form>
         </div>
     </div>
 </nav>

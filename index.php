@@ -82,7 +82,7 @@ include('includes/navbar.php');
                     echo '<div class="card">';
                     echo '<img class="card-img-top" src="assets/images/products/' . $row['prod_img'] . '" alt="' . $row['prod_name'] . '">';
                     echo '<div class="card-body">';
-                    echo '<h5 class="card-title">' . $row['prod_name'] . '</h5>';                 
+                    echo '<h5 class="card-title"><a href="product_description.php?product_id=' . $row['id'] . '">' . $row['prod_name'] . '</a></h5>';                              
                     echo '<p class="card-text">Price: $' . $row['price'] . '</p>';
                     echo '</div>';
                     echo '</div>';
