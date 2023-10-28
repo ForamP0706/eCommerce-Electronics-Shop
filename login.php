@@ -35,6 +35,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // here we are Verifying the entered password against hashed password
             if (password_verify($password, $row['password'])) {
                 $_SESSION['customer_id'] = $row['id'];
+                $_SESSION['first_name'] = $row['first_name'];
+                $_SESSION['last_name'] = $row['last_name'];
                 $_SESSION['username'] = $username;
                
                 

@@ -14,14 +14,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   if (empty($_POST["fname"])) {
     $firstNameErr = "First Name is required";
-  } else {
+} else {
     $firstName = test_input($_POST["fname"]);
-
+    
     if (!preg_match("/^[a-zA-Z ]*$/", $firstName)) {
-      $firstNameErr = "Only letters and white space allowed";
+        $firstNameErr = "Only letters and white space allowed";
+    } else {
+       
+        $firstName = strtoupper($firstName);
     }
-  }
-
+}
 
   if (empty($_POST["lname"])) {
     $lastNameErr = "Last Name is required";
@@ -32,6 +34,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!preg_match("/^[a-zA-Z ]*$/", $lastName)) {
       $lastNameErr = "Only letters and white space allowed";
     }
+    else {
+       
+      $lastName = strtoupper($lastName);
+  }
   }
 
   
@@ -80,25 +86,38 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   if (!empty($_POST["address1"])) {
     $address1 = test_input($_POST["address1"]);
-  }
+  } else {
+       
+    $address1 = strtoupper($address1);
+}
 
   if (!empty($_POST["inputCity"])) {
     $city = test_input($_POST["inputCity"]);
   }
+  else {
+  $city = strtoupper($city);}
 
   
   if (!empty($_POST["province"])) {
     $province = test_input($_POST["province"]);
-  }
+  }else {
+       
+    $province = strtoupper($province);
+}
+  
 
  
   if (!empty($_POST["inputZip"])) {
     $zip = test_input($_POST["inputZip"]);
 
 
-    if (!preg_match("/^\d{5}$/", $zip)) {
+    if (!preg_match("/^\d{5}$/", $inputZip)) {
       $zipErr = "Invalid zip code format (e.g., 12345)";
     }
+    else {
+       
+      $zip = strtoupper($inputZip);
+  }
   }
 
 

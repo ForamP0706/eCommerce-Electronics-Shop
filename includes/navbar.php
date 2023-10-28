@@ -107,6 +107,11 @@ $cartItemCount = array_sum($_SESSION['cart']);
             <?php echo $cartItemCount; ?>
         </span>
     </button>
+    <p class="text-white" style="margin: 5px;">
+    <?php if (isset($_SESSION['username'])) {
+            echo 'Welcome! ' . $_SESSION['first_name'] . ' ' . $_SESSION['last_name'];
+        }?>
+</p>
 </form>
         </div>
     </div>

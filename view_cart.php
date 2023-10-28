@@ -3,7 +3,7 @@ include('includes/header.php');
 include('includes/navbar.php');
 include('database/conn.php');
 
-// Ensure the cart exists in the session
+
 if (!isset($_SESSION['cart'])) {
     $_SESSION['cart'] = array();
 }
@@ -12,7 +12,7 @@ $cart = $_SESSION['cart'];
 $cartProducts = array();
 
 if (!empty($cart)) {
-    // Retrieve product details for items in the cart
+  
     $product_ids = array_keys($cart);
     $product_query = "SELECT * FROM products WHERE id IN (" . implode(',', $product_ids) . ")";
     $product_result = $conn->query($product_query);

@@ -5,7 +5,7 @@ include('database/conn.php');
 
 $customer_id = isset($_SESSION['customer_id']) ? $_SESSION['customer_id'] : null;
 
-// Ensure the cart exists in the session
+
 if (!isset($_SESSION['cart'])) {
     $_SESSION['cart'] = array();
 }
@@ -14,7 +14,7 @@ $cart = $_SESSION['cart'];
 $cartProducts = array();
 
 if (!empty($cart)) {
-    // Retrieve product details for items in the cart
+   
     $product_ids = array_keys($cart);
     $product_query = "SELECT * FROM products WHERE id IN (" . implode(',', $product_ids) . ")";
     $product_result = $conn->query($product_query);
@@ -31,7 +31,43 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['checkout'])) {
     $city = $_POST['city'];
     $province = $_POST['province'];
     $zip = $_POST['zip'];
+
+    if (!empty($_POST["delivery_address"])) {
+        $delivery_address = test_input($_POST["delivery_address"]);
+      } else {
+           
+        $delivery_address = strtoupper($delivery_address);
+    }
     
+      if (!empty($_POST["city"])) {
+        $city = test_input($_POST["city"]);
+      }else {
+           
+        $city = strtoupper($city);
+    }
+    
+      
+      if (!empty($_POST["province"])) {
+        $province = test_input($_POST["province"]);
+      }else {
+           
+        $province = strtoupper($province);
+    }
+      
+    
+     
+      if (!empty($_POST["zip"])) {
+        $zip = test_input($_POST["zip"]);
+    
+    
+        if (!preg_match("/^\d{5}$/", $inputZip)) {
+          $zipErr = "Invalid zip code format (e.g., 12345)";
+        }
+        else {
+           
+          $zip = strtoupper($zip);
+      }
+      }
     if (!empty($cartProducts) && !empty($delivery_address) && !empty($city) && !empty($province) && !empty($zip)) {
         $totalPrice = 0;
 
@@ -39,18 +75,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['checkout'])) {
             $totalPrice += $product['price'] * $cart[$product['id']];
         }
 
-        // Calculate tax
+        
         $tax = $totalPrice * 0.13;
         $totalPriceWithTax = $totalPrice + $tax;
 
-        // Insert delivery address into the delivery_address table
+       
         $insertAddressQuery = "INSERT INTO delivery_address (address, unit_number, city, province, zip)
                             VALUES (?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($insertAddressQuery);
         $stmt->bind_param("sssss", $delivery_address, $unit_number, $city, $province, $zip);
         $stmt->execute();
 
-        // Get the last inserted address ID
+
         $delivery_address_id = $stmt->insert_id;
 
      
@@ -63,7 +99,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['checkout'])) {
         $stmt->bind_param("iii", $delivery_address_id, $product_id, $customer_id);
         $stmt->execute();
         }
-        // Clear the cart
+     
         $_SESSION['cart'] = array();
         echo '<div class="alert alert-success" role="alert">
         Order placed successfully. Thank you!
@@ -79,7 +115,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['checkout'])) {
     <?php if (!empty($cartProducts)) {
        ?>
         <form action="checkout.php" method="post">
-            <!-- Add input fields for delivery address and other necessary information -->
+          
             <div class="form-group">
                 <label for="delivery_address">Delivery Address</label>
                 <input type="text" class="form-control" name="delivery_address" required>
