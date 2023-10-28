@@ -3,8 +3,8 @@
             <div class="container mb-2"style="margin: auto; width:50%">
                 <ul class="list-unstyled text-center d-flex justify-content-between mt-3">
                     <li style="margin: 0; padding: 0;"><a href="index.php" class="text-light text-decoration-none">Home</a></li>
-                    <li style="margin: 0; padding: 0;"><a href="#" class="text-light text-decoration-none">Products</a></li>
-                    <li style="margin: 0; padding: 0;"><a href="#" class="text-light text-decoration-none">About Us</a></li>
+                    <li style="margin: 0; padding: 0;"><a href="shop.php" class="text-light text-decoration-none">Products</a></li>
+                    <li style="margin: 0; padding: 0;"><a href="" class="text-light text-decoration-none">About Us</a></li>
                     <li style="margin: 0; padding: 0;"><a href="#" class="text-light text-decoration-none">Contact Us</a></li>
                 </ul>
             </div>

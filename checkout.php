@@ -3,6 +3,8 @@ include('includes/header.php');
 include('includes/navbar.php');
 include('database/conn.php');
 
+$customer_id = isset($_SESSION['customer_id']) ? $_SESSION['customer_id'] : null;
+
 // Ensure the cart exists in the session
 if (!isset($_SESSION['cart'])) {
     $_SESSION['cart'] = array();
@@ -51,32 +53,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['checkout'])) {
         // Get the last inserted address ID
         $delivery_address_id = $stmt->insert_id;
 
-        // Insert order details into the order_table
-        $customer_id = $_SESSION['username']; // You should have this value in your session
-
+     
         $insertOrderQuery = "INSERT INTO order_table (order_id_index, order_total_amount, delievery_address_id, product_id, customer_id)
-                            VALUES (UUID(), $totalPriceWithTax, ?, ?, ?)";
-
+        VALUES (UUID(), $totalPriceWithTax, ?, ?, ?)";
         $stmt = $conn->prepare($insertOrderQuery);
 
         foreach ($cartProducts as $product) {
-            $product_id = $product['id'];
-            $stmt->bind_param("iii", $delivery_address_id, $product_id, $customer_id);
-            $stmt->execute();
+        $product_id = $product['id'];
+        $stmt->bind_param("iii", $delivery_address_id, $product_id, $customer_id);
+        $stmt->execute();
         }
-
         // Clear the cart
         $_SESSION['cart'] = array();
+        echo '<div class="alert alert-success" role="alert">
+        Order placed successfully. Thank you!
+        <a href="shop.php" class="btn btn-primary">Continue Shopping</a>
+        </div>';
 
-        // Redirect to a thank you page or any other page as needed
-        header("Location: thankyou.php");
     }
 }
 ?>
 
 <div class="container mt-5">
     <h1>Checkout</h1>
-    <?php if (!empty($cartProducts)) { ?>
+    <?php if (!empty($cartProducts)) {
+       ?>
         <form action="checkout.php" method="post">
             <!-- Add input fields for delivery address and other necessary information -->
             <div class="form-group">
@@ -101,9 +102,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['checkout'])) {
             </div>
             <button type="submit" name="checkout" class="btn btn-primary">Complete Order</button>
         </form>
-    <?php } else {
+    <?php 
+    
+    
+} else {
         echo 'Your cart is empty.';
     }
     ?>
     <a href="view_cart.php" class="btn btn-secondary">View Cart</a>
 </div>
+<?php include('includes/footer.php');
+
+?>

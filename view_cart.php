@@ -101,3 +101,6 @@ if (!empty($cart)) {
     ?>
     <a href="shop.php" class="btn btn-secondary">Continue Shopping</a>
 </div>
+<?php include('includes/footer.php');
+
+?>

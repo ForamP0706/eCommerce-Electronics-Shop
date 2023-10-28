@@ -31,11 +31,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $result = $stmt->get_result();
         if ($result->num_rows == 1) {
             $row = $result->fetch_assoc();
-
+            
             // here we are Verifying the entered password against hashed password
             if (password_verify($password, $row['password'])) {
+                $_SESSION['customer_id'] = $row['id'];
                 $_SESSION['username'] = $username;
+               
+                
                 header('Location: index.php');
+           
                 exit;
             } else {
                 $login_error = "Invalid username or password.";

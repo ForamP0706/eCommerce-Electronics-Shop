@@ -72,6 +72,7 @@ include('includes/navbar.php');
         </div>
         <div class="row">
             <?php
+            
             include('database/conn.php');
             $sql = "SELECT * FROM products where category_id=2";
             $result = $conn->query($sql);
