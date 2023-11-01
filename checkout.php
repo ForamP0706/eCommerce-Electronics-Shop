@@ -60,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['checkout'])) {
         $zip = test_input($_POST["zip"]);
     
     
-        if (!preg_match("/^\d{5}$/", $inputZip)) {
+        if (!preg_match("/^\d{5}$/", $zip)) {
           $zipErr = "Invalid zip code format (e.g., 12345)";
         }
         else {
@@ -107,6 +107,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['checkout'])) {
         </div>';
 
     }
+}
+function test_input($data)
+{
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  return $data;
 }
 ?>
 
