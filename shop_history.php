@@ -13,7 +13,7 @@ if ($customer_id) {
                     JOIN order_items oi ON o.ID = oi.order_id
                     JOIN delivery_address d ON o.delivery_address_id = d.ID
                     JOIN products p ON oi.product_id = p.id
-                    WHERE o.customer_id = ? GROUP BY o.order_id_index";
+                    WHERE o.customer_id = ? ";
 
     $stmt = $conn->prepare($order_history_query);
     $stmt->bind_param("i", $customer_id);
