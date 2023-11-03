@@ -1,6 +1,7 @@
 <?php
 include('includes/header.php');
 include('includes/navbar.php');
+
 include('database/conn.php');
 
 $customer_id = isset($_SESSION['customer_id']) ? $_SESSION['customer_id'] : null;
@@ -68,44 +69,39 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['checkout'])) {
           $zip = strtoupper($zip);
       }
       }
-    if (!empty($cartProducts) && !empty($delivery_address) && !empty($city) && !empty($province) && !empty($zip)) {
-        $totalPrice = 0;
-
-        foreach ($cartProducts as $product) {
-            $totalPrice += $product['price'] * $cart[$product['id']];
-        }
-
-        
-        $tax = $totalPrice * 0.13;
-        $totalPriceWithTax = $totalPrice + $tax;
-
-       
+   if (!empty($cartProducts) && !empty($delivery_address) && !empty($city) && !empty($province) && !empty($zip)) {
         $insertAddressQuery = "INSERT INTO delivery_address (address, unit_number, city, province, zip)
-                            VALUES (?, ?, ?, ?, ?)";
+        VALUES (?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($insertAddressQuery);
         $stmt->bind_param("sssss", $delivery_address, $unit_number, $city, $province, $zip);
         $stmt->execute();
 
-
         $delivery_address_id = $stmt->insert_id;
 
-     
-        $insertOrderQuery = "INSERT INTO order_table (order_id_index, order_total_amount, delievery_address_id, product_id, customer_id)
-        VALUES (UUID(), $totalPriceWithTax, ?, ?, ?)";
-        $stmt = $conn->prepare($insertOrderQuery);
-
-        foreach ($cartProducts as $product) {
-        $product_id = $product['id'];
-        $stmt->bind_param("iii", $delivery_address_id, $product_id, $customer_id);
+        $insert_order_query = "INSERT INTO order_table (order_id_index,order_total_amount, delivery_address_id, customer_id) VALUES (UUID(),?, ?, ?)";
+        $stmt = $conn->prepare($insert_order_query);
+        $order_total_amount = calculateOrderTotal($cartProducts);
+        $stmt->bind_param("dii", $order_total_amount, $delivery_address_id, $customer_id);
         $stmt->execute();
+
+        $order_id = $stmt->insert_id;
+        $insert_order_item_query = "INSERT INTO order_items (order_id, product_id, quantity, product_price) VALUES (?, ?, ?,?)";
+        $stmt = $conn->prepare($insert_order_item_query);
+        foreach ($cart as $product_id => $quantity ) {
+            $productPrice = getProductPrice($product_id);  
+    
+            $stmt->bind_param("iiid", $order_id, $product_id, $quantity, $productPrice);
+            $stmt->execute();
+           
         }
-     
+       
+
+
         $_SESSION['cart'] = array();
         echo '<div class="alert alert-success" role="alert">
         Order placed successfully. Thank you!
         <a href="shop.php" class="btn btn-primary">Continue Shopping</a>
         </div>';
-
     }
 }
 function test_input($data)
@@ -115,6 +111,41 @@ function test_input($data)
   $data = htmlspecialchars($data);
   return $data;
 }
+
+function calculateOrderTotal($cartProducts) {
+    $total = 0.0; 
+
+    foreach ($cartProducts as $product) {
+        
+        $productPrice = $product['price'];
+        $quantity = $product['quantity'];
+
+       
+        $subtotal = $productPrice * $quantity;
+
+    
+        $total += $subtotal;
+    }
+
+    return $total;
+}
+function getProductPrice($product_id) {
+   
+    $query = "SELECT price FROM products WHERE id = ?";
+    include('database/conn.php');
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("i", $product_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $row = $result->fetch_assoc();
+    
+    return $row['price'];
+}
+
+
+
+
+
 ?>
 
 <div class="container mt-5">

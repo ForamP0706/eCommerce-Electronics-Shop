@@ -88,6 +88,9 @@ $cartItemCount = array_sum($_SESSION['cart']);
                     if (isset($_SESSION['username'])) {
                 ?>
                 <li class="nav-item">
+                    <a href="./shop_history.php" class="nav-link text-white">Your Orders</a>
+                </li>
+                <li class="nav-item">
                     <a href="./logout.php" class="nav-link text-white">Logout</a>
                 </li>
                 <?php } else { ?>
