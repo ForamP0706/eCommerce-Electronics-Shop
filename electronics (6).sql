@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 02, 2023 at 02:10 AM
+-- Generation Time: Nov 04, 2023 at 03:41 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -135,7 +135,8 @@ INSERT INTO `delivery_address` (`id`, `address`, `unit_number`, `city`, `provinc
 (73, '236 Carter Avenue', 'B', 'Waterloo', 'Ontario', 'N2J 3K2'),
 (74, '236 Carter Avenue', 'B', 'Waterloo', 'Ontario', 'N2J 3K2'),
 (75, '236 Carter Avenue', 'B', 'Waterloo', 'Ontario', 'N2J 3K2'),
-(76, '236 Carter Avenue', 'B', 'Waterloo', 'Ontario', 'N2J 3K2');
+(76, '236 Carter Avenue', 'B', 'Waterloo', 'Ontario', 'N2J 3K2'),
+(77, '176 king st', '4', 'Waterloo', 'ON', 'N2S 1S2');
 
 -- --------------------------------------------------------
 
@@ -162,7 +163,9 @@ INSERT INTO `order_items` (`ID`, `order_id`, `product_id`, `quantity`, `product_
 (2, 17, 4, 1, 900.00, '2023-11-01 23:21:40', '2023-11-01 23:21:40'),
 (3, 17, 2, 1, 1600.00, '2023-11-01 23:21:40', '2023-11-01 23:21:40'),
 (4, 18, 2, 1, 1600.00, '2023-11-01 23:28:44', '2023-11-01 23:28:44'),
-(5, 18, 1, 1, 1500.50, '2023-11-01 23:28:44', '2023-11-01 23:28:44');
+(5, 18, 1, 1, 1500.50, '2023-11-01 23:28:44', '2023-11-01 23:28:44'),
+(6, 19, 10, 2, 800.00, '2023-11-02 05:57:10', '2023-11-02 05:57:10'),
+(7, 19, 2, 1, 1600.00, '2023-11-02 05:57:10', '2023-11-02 05:57:10');
 
 -- --------------------------------------------------------
 
@@ -204,7 +207,8 @@ INSERT INTO `order_table` (`ID`, `order_id_index`, `order_total_amount`, `order_
 (15, '051e3901-790d-11ee-a661-54ab3ab52253', 2500, NULL, '2023-11-01 19:18:52', 73, 18, '2023-11-01 23:18:52', '2023-11-01 23:18:52'),
 (16, '1a0035c2-790d-11ee-a661-54ab3ab52253', 2500, NULL, '2023-11-01 19:19:27', 74, 18, '2023-11-01 23:19:27', '2023-11-01 23:19:27'),
 (17, '698e7d8a-790d-11ee-a661-54ab3ab52253', 2500, NULL, '2023-11-01 19:21:40', 75, 18, '2023-11-01 23:21:40', '2023-11-01 23:21:40'),
-(18, '6618f3d4-790e-11ee-a661-54ab3ab52253', 3100.5, NULL, '2023-11-01 19:28:44', 76, 18, '2023-11-01 23:28:44', '2023-11-01 23:28:44');
+(18, '6618f3d4-790e-11ee-a661-54ab3ab52253', 3100.5, NULL, '2023-11-01 19:28:44', 76, 18, '2023-11-01 23:28:44', '2023-11-01 23:28:44'),
+(19, 'a95be9f3-7944-11ee-9d5f-54ab3ab52253', 3200, NULL, '2023-11-02 01:57:10', 77, 18, '2023-11-02 05:57:10', '2023-11-02 05:57:10');
 
 -- --------------------------------------------------------
 
@@ -339,19 +343,19 @@ ALTER TABLE `customer`
 -- AUTO_INCREMENT for table `delivery_address`
 --
 ALTER TABLE `delivery_address`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
 
 --
 -- AUTO_INCREMENT for table `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `order_table`
 --
 ALTER TABLE `order_table`
-  MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `products`
