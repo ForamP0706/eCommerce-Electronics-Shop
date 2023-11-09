@@ -35,10 +35,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->close();
 }
 ?>
-
+<main class="main-content position-relative vh-100 border-radius-lg ">
 <div class="container-fluid mt-4">
     <div class="row justify-content-center align-items-center">
-        <div class="col-md-6 border p-4 rounded">
+        <div class="col-md-6 border p-4 rounded bg-white">
             <form method="post">
                 <div class="mb-3">
                     <label for="name" class="form-label">Name</label>
@@ -72,5 +72,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </div>
 </div>
-
+</main>
 <?php include('includes/footer.php');

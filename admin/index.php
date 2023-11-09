@@ -12,15 +12,12 @@ include '../includes/functions.php';
 $products = get_products($conn);
 ?>
 
-   <div class="container">
-    <div class="row justify-content-center align-items-center my-5">
-        <div class="col-md-5 text-center border p-4 rounded shadow">
+   <div class="container d-flex justify-content-center align-items-center vh-100 ">
+        <div class="col-md-5 text-center border p-4 rounded shadow bg-white">
             <h1 class="display-4 fw-bold">Welcome to the Admin Dashboard</h1>
             <p class="lead fs-4">Hello, <?php echo $_SESSION['username']; ?>!</p>
         </div>
-    </div>
 </div>
-
 
 <?php
 include('includes/footer.php');?>

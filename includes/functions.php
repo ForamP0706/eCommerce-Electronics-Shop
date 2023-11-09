@@ -15,6 +15,54 @@ function get_products($conn) {
     return $products;
 }
 
+function get_customers($conn) {
+    $query = "SELECT * FROM customer";
+    $result = mysqli_query($conn, $query);
+
+    if (!$result) {
+        die("Query Error: " . mysqli_error($conn));
+    }
+
+    $customers = array();
+
+    while ($row = mysqli_fetch_assoc($result)) {
+        $customers[] = $row;
+    }
+
+    return $customers;
+}
+function get_customer_by_id($conn, $customer_id) {
+    $query = "SELECT * FROM customer WHERE id = $customer_id";
+    $result = mysqli_query($conn, $query);
+
+    if (!$result) {
+        die("Query failed: " . mysqli_error($conn));
+    }
+    $customer = mysqli_fetch_assoc($result);
+
+    return $customer;
+}
+function update_customer($conn, $customer_id, $first_name, $last_name, $email, $password) {
+    // here we customer table 
+    $query = "UPDATE customer SET first_name = '$first_name', last_name = '$last_name', email = '$email', password = '$password' WHERE id = $customer_id";
+    $result = mysqli_query($conn, $query);
+
+    if (!$result) {
+        die("Query failed: " . mysqli_error($conn));
+    }
+
+    return true; // or you can customize the return value based on your needs
+}
+function delete_customer($conn, $customer_id) {
+    $query = "DELETE FROM customer WHERE id = $customer_id";
+    $result = mysqli_query($conn, $query);
+
+    if (!$result) {
+        die("Query failed: " . mysqli_error($conn));
+    }
+
+    return true;
+}
 function get_product_by_id($conn, $id) {
     $sql = "SELECT products.*, categories.category_name AS CategoryName  
             FROM products 

@@ -22,6 +22,9 @@
                     <a href="add_category.php" class="nav-link text-dark">New Category</a>
                 </li>
                 <li class="nav-item">
+                    <a href="user_managment.php" class="nav-link text-dark">User managment</a>
+                </li>
+                <li class="nav-item">
                     <span class="nav-link text-muted">|</span>
                 </li>
                 <li class="nav-item">

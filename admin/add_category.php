@@ -10,11 +10,11 @@ if (!isset($_SESSION['username'])) {
 
 include '../database/conn.php';
 
-// Checking if the form is submitted
+//  here we have if statement for Checking if the form is submitted
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $categoryName = $_POST['categoryName'];
 
-    // Inserting the new category into the database
+    // here we are Inserting the new category into the database
     $stmt = $conn->prepare("INSERT INTO categories (category_name) VALUES (?)");
     $stmt->bind_param('s', $categoryName);
 
@@ -25,11 +25,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
-
-<div class="container">
-    <div class="row justify-content-center align-items-center my-5">
-        <div class="col-md-6">
-            <form method="post" class="border p-4 rounded shadow">
+<main class="main-content position-relative vh-100 border-radius-lg ">
+<div class="container ">
+    <div class="row justify-content-center align-items-center my-5 ">
+        <div class="col-md-6 ">
+            <form method="post" class="border p-4 rounded shadow bg-white">
                 <h2 class="mb-4">Add New Category</h2>
 
                 <?php if (isset($success_message)) : ?>
@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </div>
 </div>
-
+</main>
 <?php
 include 'includes/footer.php';
 ?>

@@ -15,8 +15,9 @@ $categories = get_categories($conn);
 ?>
 
 
-
-    <div class="container mt-5 border rounded p-4">
+<div class="d-flex flex-column min-vh-100">
+    <div class="container mt-5 mb-5 border rounded p-4 bg-white">
+    <div class="table-responsive">
     <table class="table table-bordered table-hover">
         <thead class="thead-dark">
             <tr>
@@ -31,14 +32,14 @@ $categories = get_categories($conn);
         <tbody>
             <?php foreach ($products as $product) : ?>
                 <tr>
-                    <td><?= $product['id']; ?></td>
-                    <td><?= $product['prod_name']; ?></td>
-                    <td><?= $product['price']; ?></td>
-                    <td><?= $product['category_id']; ?></td>
-                    <td><?= $product['qty']; ?></td>
+                    <td class="text-wrap"><?= $product['id']; ?></td>
+                    <td class="text-wrap"><?= $product['prod_name']; ?></td>
+                    <td class="text-wrap"><?= $product['price']; ?></td>
+                    <td class="text-wrap"><?= $product['category_id']; ?></td>
+                    <td class="text-wrap"><?= $product['qty']; ?></td>
                     <td>
 
-                        <!-- here we have a form to update the quantity value -->
+                        <!-- here we have a form to update the quantity value  -->
                         <form method="post" action="update_quantity.php">
                             <input type="hidden" name="product_id" value="<?= $product['id']; ?>">
                             <input type="number" name="new_quantity" min="0" required>
@@ -55,4 +56,6 @@ $categories = get_categories($conn);
         </tbody>
     </table>
 </div>
-    <?php include('includes/footer.php');
+</div>
+</div>
+    <?php include('includes/footer.php');?>
