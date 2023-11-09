@@ -11,7 +11,7 @@ if (!isset($_SESSION['username'])) {
 include '../database/conn.php';
 include '../includes/functions.php';
 
-// Handle form submission for updating customer information
+// Handling form submission for updating customer information
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
     if ($_POST['action'] === 'edit') {
         // here we are getting the customer data for editing
