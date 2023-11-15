@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
-<div class="container mt-5 mb-">
+<div class="container mt-5 mb-2 vh-100">
     <div class="row justify-content-center">
         <div class="col-md-6">
             <form method="post" class="bg-light p-4 rounded border">
