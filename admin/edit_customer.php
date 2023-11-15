@@ -20,10 +20,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
 
     // Perform the update
     if (update_customer($conn, $customer_id, $first_name, $last_name, $email, $password)) {
-        // Optionally, you can redirect or show a success message
+        
         echo "Update successful!";
     } else {
-        // Handle the case where the update fails (e.g., show an error message)
+        // Handle the case where the update fails
         echo "Update failed!";
     }
 }
@@ -40,7 +40,7 @@ if (isset($_GET['id'])) {
         exit;
     }
 } else {
-    // Handle case where customer ID is not provided
+ 
     header('Location: user_managment.php');
     exit;
 }
