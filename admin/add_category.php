@@ -10,11 +10,11 @@ if (!isset($_SESSION['username'])) {
 
 include '../database/conn.php';
 
-//  here we have if statement for Checking if the form is submitted
+// have if statement for Checking if the form is submitted
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $categoryName = $_POST['categoryName'];
 
-    // here we are Inserting the new category into the database
+    // Inserting the new category into the database
     $stmt = $conn->prepare("INSERT INTO categories (category_name) VALUES (?)");
     $stmt->bind_param('s', $categoryName);
 
