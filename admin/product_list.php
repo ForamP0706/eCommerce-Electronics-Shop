@@ -39,7 +39,7 @@ $categories = get_categories($conn);
                     <td class="text-wrap"><?= $product['qty']; ?></td>
                     <td>
 
-                        <!-- here we have a form to update the quantity value  -->
+                        <!-- form to update the quantity value  -->
                         <form method="post" action="update_quantity.php">
                             <input type="hidden" name="product_id" value="<?= $product['id']; ?>">
                             <input type="number" name="new_quantity" min="0" required>
