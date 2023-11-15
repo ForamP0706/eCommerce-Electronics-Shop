@@ -62,7 +62,7 @@
                     <em><b>- Rapid Response Service :</b></em>  
                     <p>Experience prompt and efficient service with our rapid response system, ensuring your concerns are addressed swiftly and effectively.</p>
                     
-                    <em><b>- Exclusive Loyalty Benefits :</b></em>  
+                    <em><b>- Exclusive Loyalty Benefits :</b></em> [Coming soon] 
                     <p>Unlock special loyalty rewards, discounts, and exclusive offers as a token of our appreciation for choosing us as your tech partner.</p>
 
                     <div class="banner"></div>
