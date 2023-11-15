@@ -7,11 +7,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id'])) {
 
     // Perform the deletion
     if (delete_customer($conn, $customer_id)) {
-        // Optionally, you can redirect or show a success message
+        
         header('Location: user_managment.php');
         exit;
     } else {
-        // Handle the case where the deletion fails (e.g., show an error message)
+        // Handle the case where the deletion fails
         echo "Deletion failed!";
     }
 }
