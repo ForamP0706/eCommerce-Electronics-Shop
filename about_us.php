@@ -7,14 +7,12 @@
     <div class="content-wrapper">
         <div class="container">
 
-            <!-- Main content -->
             <section class="content">
                 <div class="row">
                     <div class="col-sm-9">
                         
                     <h1 style="text-align: center; font-weight: bold;">About Us</h1>
 
-                    <!-- Added styles for the entire page -->
                     <style>
                         body {
                             font-family: Arial, sans-serif;
@@ -35,7 +33,6 @@
                             color: #666;
                         }
 
-                        /* Style for the banner */
                         .banner {
                             margin: 20px 0;
                             background: url('https://picsum.photos/1200/200') center/cover no-repeat;
@@ -68,10 +65,8 @@
                     <em><b>- Exclusive Loyalty Benefits :</b></em>  
                     <p>Unlock special loyalty rewards, discounts, and exclusive offers as a token of our appreciation for choosing us as your tech partner.</p>
 
-                    <!-- Banner Placeholder -->
                     <div class="banner"></div>
 
-                    <!-- Rest of your content... -->
 
                     </div>
                     
