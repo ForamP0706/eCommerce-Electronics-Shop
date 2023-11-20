@@ -1,4 +1,3 @@
-<!-- update_order.php -->
 <?php
 include('includes/header.php');
 include('includes/navbar.php');
@@ -20,24 +19,32 @@ if (isset($_GET['id'])) {
     $orderDetails = get_order_details($conn, $orderId);
 
     if ($orderDetails) {
-        // here we have displayed a form to update order status
+        // Display a form to update order status
         echo '<div class="container mt-5>';
         echo '<h1 class="text-center">Update Order Status</h1>';
-        echo '<div class="card">';
+        echo '<div class="card m-2">';
         echo '<div class="card-body">';
         echo '<form action="process_update.php" method="post">';
         echo '<label for="status">New Status:</label>';
-        echo '<input type="text" name="status" id="status" required>';
+        echo '<select name="status" id="status" required>';
+        echo '<option value="In Process" selected>In Process</option>';
+        echo '<option value="Approved">Approved</option>';
+        echo '<option value="Not Approved">Not Approved</option>';
+        echo '</select>';
         echo '<input type="hidden" name="order_id" value="' . $orderId . '">';
         echo '<button type="submit">Update Status</button>';
         echo '</form>';
-       echo  '</div>';
-       echo  '</div>';
-       echo  '</div>';
+        echo '</div>';
+        echo '</div>';
+        echo '</div>';
     } else {
-        echo 'Order not found.';
+        echo '<div class="container mt-5">';
+        echo '<div class="alert alert-danger">Order not found.</div>';
+        echo '</div>';
     }
 } else {
-    echo 'Invalid request.';
+    echo '<div class="container mt-5">';
+    echo '<div class="alert alert-danger">Invalid request.</div>';
+    echo '</div>';
 }
 ?>
