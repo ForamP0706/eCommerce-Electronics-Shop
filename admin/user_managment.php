@@ -52,7 +52,7 @@ $customers = get_customers($conn);
                             <th scope="col">ID</th>
                             <th scope="col">First Name</th>
                             <th scope="col">Last Name</th>
-                            <th scope="col">Email</th>
+                            <!-- <th scope="col">Email</th> -->
                             <th scope="col">Actions</th>
                         </tr>
                     </thead>
@@ -62,7 +62,6 @@ $customers = get_customers($conn);
                                 <td><?= $customer['id']; ?></td>
                                 <td><?= $customer['first_name']; ?></td>
                                 <td><?= $customer['last_name']; ?></td>
-                                <td><?= $customer['email']; ?></td>
                                 <td>
                                     <form action="edit_customer.php" method="post" style="display: inline;">
                                         <input type="hidden" name="action" value="edit">
