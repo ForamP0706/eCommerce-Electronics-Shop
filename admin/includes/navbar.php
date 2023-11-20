@@ -31,9 +31,6 @@
                     <span class="nav-link text-muted">|</span>
                 </li>
                 <li class="nav-item">
-                    <a href="" class="nav-link text-dark" target="">About Us</a>
-                </li>
-                <li class="nav-item">
                     <a href="../logout.php" class="nav-link text-dark">Logout</a>
                 </li>
             </ul>
