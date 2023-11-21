@@ -79,12 +79,12 @@ $cartItemCount = array_sum($_SESSION['cart']);
                 </li>
                 <?php } ?>
                 <li class="nav-item">
-                    <a href="" class="nav-link text-white" target="">About Us</a>
+                    <a href="about_us" class="nav-link text-white" target="about us">About Us</a>
                 </li>
                 <li class="nav-item">
-                    <a href="" class="nav-link text-white" target="">Contact Us</a>
+                    <a href="contact_us" class="nav-link text-white" target="contact us">Contact Us</a>
                 </li>
-                
+
                 <?php
                     if (isset($_SESSION['username'])) {
                 ?>
