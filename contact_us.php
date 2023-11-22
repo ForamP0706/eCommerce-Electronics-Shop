@@ -9,11 +9,9 @@
 
             <section class="content">
                 <div class="row">
-                    <div class="col-sm-9">
-                        
-                    <h1 style="text-align: center; font-weight: bold;">Contact Us</h1>
-
-                    <style>
+                    <div class="col-sm-9">            
+                        <h1 style="text-align: center; font-weight: bold;">Contact Us</h1>
+                        <style>
                         body {
                             font-family: Arial, sans-serif;
                             background-color: #f5f5f5;
@@ -38,59 +36,30 @@
                             margin: 20px 0;
                             background: url('images/contact_us.jpg') center/cover no-repeat;
                             height: 200px;
-                        }
+                        }                        </style>
 
-                        .contact-form {
-                            background-color: #f9f9f9;
-                            padding: 20px;
-                            margin-top: 20px;
-                            border-radius: 5px;
-                        }
+                        <p>Welcome to eCommerce Electronics, your trusted destination for all your technology needs. If you have any questions, concerns, or feedback, please don't hesitate to get in touch with us.</p>
+                        <div class="banner"></div>
 
-                        .contact-form label {
-                            font-weight: bold;
-                        }
+                        <h3>Contact Information</h3>
 
-                        .contact-form input[type="text"],
-                        .contact-form textarea {
-                            width: 100%;
-                            padding: 10px;
-                            margin-bottom: 10px;
-                            border-radius: 5px;
-                            border: 1px solid #ccc;
-                        }
+                        <p><strong>By Phone:</strong> 888-888-8888 (Toll-free)</p>
 
-                        .contact-form input[type="submit"] {
-                            background-color: #3498db;
-                            color: white;
-                            border: none;
-                            padding: 10px 20px;
-                            cursor: pointer;
-                            border-radius: 5px;
-                        }
+                        <p><strong>By Email:</strong> contact@ecommerceelectronics.com</p>
 
-                        .contact-form input[type="submit"]:hover {
-                            background-color: #2980b9;
-                        }
-                    </style>
+                        <h3>Customer Service Centre</h3>
 
-                    <!-- Contact Form -->
+                        <p>Our customer service centre is available to assist you at:</p>
 
-                    <div class="banner"></div>
-                    <div class="contact-form">
-                        <form action="contact_process.php" method="post">
-                            <label for="name">Name:</label><br>
-                            <input type="text" id="name" name="name" required><br>
-                            <label for="email">Email:</label><br>
-                            <input type="text" id="email" name="email" required><br>
-                            <label for="message">Message:</label><br>
-                            <textarea id="message" name="message" rows="4" required></textarea><br>
-                            <input type="submit" value="Submit">
-                        </form>
-                    </div>
+                        <p><strong>Address:</strong> 300 Tech Street, waterloo, ON, N2K7H8</p>
+                        <p><strong>Hours:</strong> Monday - Friday: 9 a.m. to 6 p.m.</p>
+
+                        <h3>Submit a Webform</h3>
+
+                        <p>For non-urgent inquiries or comments, you can also reach us by filling out our webform. We aim to respond within 24-48 hours.</p>
+
 
                     </div>
-                    
                 </div>
             </section>
 
