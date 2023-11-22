@@ -36,7 +36,7 @@
 
                         .banner {
                             margin: 20px 0;
-                            background: url('https://picsum.photos/1200/200') center/cover no-repeat;
+                            background: url('images/contact_us.jpg') center/cover no-repeat;
                             height: 200px;
                         }
 

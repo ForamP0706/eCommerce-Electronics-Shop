@@ -34,7 +34,7 @@
 
                         .banner {
                             margin: 20px 0;
-                            background: url('https://picsum.photos/1200/200') center/cover no-repeat;
+                            background: url('images/about_us.jpg') center/cover no-repeat;
                             height: 200px;
                         }
                     </style>
@@ -64,7 +64,7 @@
                     <em><b>- Exclusive Loyalty Benefits :</b></em> [Coming soon] 
                     <p>Unlock special loyalty rewards, discounts, and exclusive offers as a token of our appreciation for choosing us as your tech partner.</p>
 
-                    <div class="banner"></div>
+                    
 
 
                     </div>
