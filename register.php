@@ -3,9 +3,7 @@ include('includes/navbar.php');
 ?>
 <?php
 
-
 $firstName = $lastName = $email = $password = $repassword = $phone = $address1 = $city = $province = $zip = '';
-
 $firstNameErr = $lastNameErr = $emailErr = $passwordErr = $repasswordErr = $phoneErr = $address1Err = $unitNumberErr = $cityErr = $provinceErr = $zipErr = '';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -40,7 +38,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   }
   }
 
-  
   if (empty($_POST["uemail"])) {
     $emailErr = "Email is required";
   } else {
@@ -52,7 +49,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
   }
 
-  
   if (empty($_POST["upassword"])) {
     $passwordErr = "Password is required";
   } else {
@@ -61,9 +57,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
   }
 
-
-
-  
   if (empty($_POST["reupassword"])) {
     $repasswordErr = "Please confirm your password";
   } else {
@@ -74,7 +67,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
   }
 
-  
   if (!empty($_POST["phone"])) {
     $phone = test_input($_POST["phone"]);
 
@@ -82,7 +74,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $phoneErr = "Invalid phone number format (e.g., 123-456-7890)";
     }
   }
-
 
   if (!empty($_POST["address1"])) {
     $address1 = test_input($_POST["address1"]);
@@ -105,8 +96,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $province = strtoupper($province);
 }
   
-
- 
   if (!empty($_POST["inputZip"])) {
     $zip = test_input($_POST["inputZip"]);
 
@@ -119,7 +108,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $zip = strtoupper($inputZip);
   }
   }
-
 
   include 'database/conn.php';
 
@@ -136,7 +124,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     exit();
   }
 }
-
 
 
 function test_input($data)
@@ -215,7 +202,6 @@ function test_input($data)
   </div>
 </div>
 </div>
-
 
 <?php include('includes/footer.php');
 

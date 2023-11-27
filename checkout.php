@@ -91,7 +91,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['checkout'])) {
             $productPrice = getProductPrice($product_id);  
     
             $stmt->bind_param("iiid", $order_id, $product_id, $quantity, $productPrice);
-            // $stmt->execute();
            
         }
        
@@ -141,9 +140,6 @@ function getProductPrice($product_id) {
     
     return $row['price'];
 }
-
-
-
 
 
 ?>

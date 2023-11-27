@@ -7,9 +7,7 @@ if (!isset($_SESSION['username'])) {
     header('Location: login.php');
     exit;
 }
-// include '../includes/db.php';
 include '../database/conn.php';
-
 include '../includes/functions.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

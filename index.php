@@ -1,8 +1,6 @@
 <?php include('includes/header.php');
 include('includes/navbar.php');
 ?>
-        
-
         <header class="bg-primary py-5">
             <div class="container px-4 px-lg-5 my-5">
                 <div class="text-center text-white">
@@ -15,7 +13,6 @@ include('includes/navbar.php');
         <section class="container">
         <div class="row">
                     <div class="col-md-12" style="margin-top: 35px; margin-bottom: 25px;" >
-                  <!--  <h1 style="color: black; font-weight: bold; text-align: center;"> BANNER</h1> -->
                     </div>
                 </div>
         <div id="carouselExampleSlides" class="carousel slide" data-ride="carousel">
@@ -40,29 +37,6 @@ include('includes/navbar.php');
             </a>
         </div>
         </section>
-        <!-- <section class="py-5">
-            <div class="container px-4 px-lg-5 mt-5">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h3>Top Sellers</h3>
-                    </div>
-                </div>
-                <div class="row">
-                <div class="col-md-3">
-                        <img class="w-100" src="assets/images/AWS7.jpg" alt="seller">
-                    </div>
-                    <div class="col-md-3">
-                        <img class="w-100" src="assets/images/B1C35.jpg" alt="seller">
-                    </div>
-                    <div class="col-md-3">
-                        <img class="w-100" src="assets/images/BSR+.jpg" alt="seller">
-                    </div>
-                    <div class="col-md-3">
-                        <img class="w-100" src="assets/images/CER6.jpg" alt="seller">
-                    </div>
-                </div>
-            </div>
-        </section> -->
         <section class="py-5">
     <div class="container px-4 px-lg-5 mt-5">
         <div class="row">
@@ -94,8 +68,6 @@ include('includes/navbar.php');
         </div>
     </div>
 </section>
-    
-    
         <?php include('includes/footer.php');
 
 ?>
