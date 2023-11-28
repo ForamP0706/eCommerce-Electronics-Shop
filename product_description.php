@@ -1,4 +1,5 @@
 <?php
+
 include('includes/header.php');
 include('includes/navbar.php');
 
@@ -15,7 +16,7 @@ if (isset($_GET['product_id'])) {
         <div class="container mt-5">
             <div class="row">
                 <div class="col-md-6">
-                    <img src="assets/images/products/<?php echo $product['prod_img']; ?>" alt="<?php echo $product['prod_name']; ?>" class="img-fluid">
+                    <img src="assets/images/products/<?php echo $product['prod_img']; ?>" alt="<?php echo $product['prod_name']; ?>" class="img-fluid mt-2 mb-4 mr-4">
                 </div>
                 <div class="col-md-6">
                     <h1><?php echo $product['prod_name']; ?></h1>
@@ -29,8 +30,8 @@ if (isset($_GET['product_id'])) {
                             <label for="quantity">Quantity:</label>
                             <input type="number" name="quantity" id="quantity" value="1">
                         </div>
-                        <button type="submit" class="btn btn-primary">Add to Cart</button>
-                        <a href="shop.php" class="btn btn-secondary">Continue Shopping</a>
+                        <button type="submit" class="btn btn-primary mt-2 mb-4 mr-4">Add to Cart</button>
+                        <a href="shop.php" class="btn btn-secondary mt-2 mb-4 mr-4">Continue Shopping</a>
                     </form>
                 </div>
             </div>
@@ -42,6 +43,7 @@ if (isset($_GET['product_id'])) {
 } else {
     echo "Product ID not provided.";
 }
+
 
 include('includes/footer.php');
 ?>

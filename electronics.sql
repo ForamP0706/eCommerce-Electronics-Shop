@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 04, 2023 at 03:41 AM
+-- Generation Time: Nov 20, 2023 at 05:17 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -76,18 +76,17 @@ CREATE TABLE `customer` (
 --
 
 INSERT INTO `customer` (`id`, `first_name`, `last_name`, `email`, `password`, `phone`, `address1`, `unit_number`, `city`, `province`, `zip`) VALUES
-(1, 'foram', 'patel', 'foram@gmail.com', '123', '4567890123', '153 huber st', '', '', 'ON', 'N2J 3K2'),
-(2, 'ravi', 'patel', 'ravi@gmail.com', 'ravi', '1234567890', '236 Carter Avenue', '', '', 'Ontario', 'N2J 3K2'),
-(3, 'riya', 'shah', 'r@gmail.com', 'riya', '1234567890', '236 Carter Avenue', '', '', 'Ontario', 'N2J 3K2'),
-(4, 'jiya', 'shah', 'j@gmail.com', 'jiya', '1234567890', '236 Carter Avenue', '', 'Waterloo', 'Ontario', 'N2J 3K2'),
-(12, 'namrata', 'shah', 'namrata@hotmail.com', '$2y$10$hbSM8usKF9TrVzcmc6D/mu5pscXIQw95kwJJ3MVOdah9oI7guN/jy', '6789012345', '68 north cres', '101', 'Waterloo', 'Ontario', 'N2J 3K2'),
 (13, 'tirth', 'patel', 'tirth@gmail.com', '$2y$10$vBPbSDG57.qR8/kdG3NNBuDVARi.34UNzI1/olb4DJqQINV9zGqU2', '6565656565', '45 franklin rd', '3401', 'Waterloo', 'Ontario', 'N2J 3K2'),
-(14, 'daksh', 'shah', 'daksh@gmail.com', '$2y$10$bwM2EM20yaPz/lbmqhd/Reili2WNZdDb1Q7JjuQUtBnbQ5hQjAICG', '6475309828', '236 Carter Avenue', 'B', 'Waterloo', 'Ontario', 'N2J 3K2'),
 (15, 'myra', 'patel', 'myra@gmail.com', '$2y$10$iVjGk/PUaB8RLHQdTNJVf.1vF8lwOVrFZrYd9vPNp.xkbZ9gEStyG', '8901234567', '236 Carter Avenue', 'B', 'Waterloo', 'Ontario', 'N2J 3K2'),
 (16, 'janvi', 'Shah', 'Janvi@gmail.com', '$2y$10$Fq.6eOIXqmYvFlkNvNua8Ow0erwNwDqoHLIPJ7e9Kv14EtpECBTLa', '1234567890', '236 Carter Avenue', 'B', 'Waterloo', 'Ontario', 'N2J 3K2'),
 (17, 'peter', 'peter', 'peter@gmail.com', '$2y$10$rYKKOmwUXSE26tSVmKwrb.1elLFb18x.gF2/dNM93zI/dEdmvKZVG', '1234567890', '236 Carter Avenue', 'B', 'Waterloo', 'Ontario', 'N2J 3K2'),
 (18, 'jill', 'shah', 'jill@gmail.com', '$2y$10$or3.HY6Y8ArLZLdy3DCFOueRbwwew8bYONY1ag8BXgGi0oAJuKNgO', '4567890123', '236 Carter Avenue', 'B', 'Waterloo', 'Ontario', 'N2J 3K2'),
-(19, 'SANJAY', 'PATEL', 'sanjay@gmail.com', '$2y$10$sTGNU9a7lSdlDko3piHi4uzcXc59ptt.blVSi6/9xrhR8pzZZ6TeG', '8901234567', '65 university Ave', '1108', 'Waterloo', 'On', 'N2K 4R5');
+(19, 'SANJAY', 'PATEL', 'sanjay@gmail.com', '$2y$10$sTGNU9a7lSdlDko3piHi4uzcXc59ptt.blVSi6/9xrhR8pzZZ6TeG', '8901234567', '65 university Ave', '1108', 'Waterloo', 'On', 'N2K 4R5'),
+(20, 'SJ', 'SINGH', '123@sjs.com', '', '+11231231236', 'sdfsdfsf', '', 'sfwsfwefwef', 'California', '21331'),
+(22, 'SJ', 'SINGH', '101@ssdfw3242.com', '$2y$10$30x6SqCcUEtQ7gy7i/66f.Ea15eC/supmu8CCnvKZl3G5.J/7zwZW', '+11231231236', 'sdfsdfsf', '', 'sfwsfwefwef', 'California', '21331'),
+(23, 'SATINDER', 'JEET', '112@gmail.com', '$2y$10$Fvb8S65mMHisF9mWAHDvFema0WHT5k014Om4hrHL3949k9/QnIGGy', '1231234444', '401', '140', 'cambridge', 'Ontario', '101'),
+(24, 'SJ', 'SINGH', '123@ssdfw3242.com', '$2y$10$TiY5YIRfnpJT1p0Die9h/eFvgRSIxMzh.hp7fmYL7eDoXKzkw51q2', '+11231231236', 'sdfsdfsf', '123', 'sfwsfwefwef', 'California', '21331'),
+(25, 'SJ', 'SINGH', '101@ssdfw@42.com', '$2y$10$8NnAdLpchaNfn2Xy5dZyL.F.qjoz6vB/YNsGNMWXiEvvikjDSg/ZC', '+11231231236', 'sdfsdfsf', '101', 'sfwsfwefwef', 'California', '21331');
 
 -- --------------------------------------------------------
 
@@ -136,7 +135,17 @@ INSERT INTO `delivery_address` (`id`, `address`, `unit_number`, `city`, `provinc
 (74, '236 Carter Avenue', 'B', 'Waterloo', 'Ontario', 'N2J 3K2'),
 (75, '236 Carter Avenue', 'B', 'Waterloo', 'Ontario', 'N2J 3K2'),
 (76, '236 Carter Avenue', 'B', 'Waterloo', 'Ontario', 'N2J 3K2'),
-(77, '176 king st', '4', 'Waterloo', 'ON', 'N2S 1S2');
+(77, '176 king st', '4', 'Waterloo', 'ON', 'N2S 1S2'),
+(78, 'sdfsdfsf', '122', 'sfwsfwefwef', 'California', '21331'),
+(79, 'sdfsdfsf', '112', 'sfwsfwefwef', 'California', '21331'),
+(80, 'sdfsdfsf', '112', 'sfwsfwefwef', 'California', '21331'),
+(81, 'sdfsdfsf', '112', 'sfwsfwefwef', 'California', '21331'),
+(82, 'sdfsdfsf', '112', 'sfwsfwefwef', 'California', '21331'),
+(83, 'sdfsdfsf', '', 'sfwsfwefwef', 'California', '21331'),
+(84, 'sjsj', '', 'cali', 'ON', '21334'),
+(85, '101', '121', '1212', 'California', '21331'),
+(86, 'sdfsdfsf', '', 'sfwsfwefwef', 'California', '21331'),
+(87, 'sdfsdfsf', '', 'sfwsfwefwef', 'California', '21331');
 
 -- --------------------------------------------------------
 
@@ -151,12 +160,7 @@ CREATE TABLE `order_items` (
   `quantity` int(11) NOT NULL,
   `product_price` double(8,2) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  PRIMARY KEY (`ID`),
-  CONSTRAINT `fk_order_items_order`
-    FOREIGN KEY (`order_id`)
-    REFERENCES `order_table` (`ID`)
-    ON DELETE CASCADE
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -164,13 +168,11 @@ CREATE TABLE `order_items` (
 --
 
 INSERT INTO `order_items` (`ID`, `order_id`, `product_id`, `quantity`, `product_price`, `created_at`, `updated_at`) VALUES
-(1, 1, 2, 1, 1600.00, '2023-11-01 22:53:09', '2023-11-01 22:53:09'),
-(2, 17, 4, 1, 900.00, '2023-11-01 23:21:40', '2023-11-01 23:21:40'),
-(3, 17, 2, 1, 1600.00, '2023-11-01 23:21:40', '2023-11-01 23:21:40'),
-(4, 18, 2, 1, 1600.00, '2023-11-01 23:28:44', '2023-11-01 23:28:44'),
-(5, 18, 1, 1, 1500.50, '2023-11-01 23:28:44', '2023-11-01 23:28:44'),
-(6, 19, 10, 2, 800.00, '2023-11-02 05:57:10', '2023-11-02 05:57:10'),
-(7, 19, 2, 1, 1600.00, '2023-11-02 05:57:10', '2023-11-02 05:57:10');
+(0, 25, 1, 1, 1500.50, '2023-11-15 21:22:15', '2023-11-15 21:22:15'),
+(4, 18, 2, 1, 1600.00, '2023-11-02 03:28:44', '2023-11-02 03:28:44'),
+(5, 18, 1, 1, 1500.50, '2023-11-02 03:28:44', '2023-11-02 03:28:44'),
+(6, 19, 10, 2, 800.00, '2023-11-02 09:57:10', '2023-11-02 09:57:10'),
+(7, 19, 2, 1, 1600.00, '2023-11-02 09:57:10', '2023-11-02 09:57:10');
 
 -- --------------------------------------------------------
 
@@ -195,25 +197,27 @@ CREATE TABLE `order_table` (
 --
 
 INSERT INTO `order_table` (`ID`, `order_id_index`, `order_total_amount`, `order_status`, `order_date`, `delivery_address_id`, `customer_id`, `created_at`, `updated_at`) VALUES
-(1, '6da7ace9-7909-11ee-a661-54ab3ab52253', 2500, NULL, '2023-11-01 18:53:09', 59, 18, '2023-11-01 22:53:09', '2023-11-01 22:53:09'),
-(2, 'ff2599ef-7909-11ee-a661-54ab3ab52253', 2500, NULL, '2023-11-01 18:57:13', 60, 18, '2023-11-01 22:57:13', '2023-11-01 22:57:13'),
-(3, '1cc98923-790a-11ee-a661-54ab3ab52253', 2500, NULL, '2023-11-01 18:58:03', 61, 18, '2023-11-01 22:58:03', '2023-11-01 22:58:03'),
-(4, 'bf93ff0d-790a-11ee-a661-54ab3ab52253', 2500, NULL, '2023-11-01 19:02:36', 62, 18, '2023-11-01 23:02:36', '2023-11-01 23:02:36'),
-(5, 'd41c3090-790a-11ee-a661-54ab3ab52253', 2500, NULL, '2023-11-01 19:03:11', 63, 18, '2023-11-01 23:03:11', '2023-11-01 23:03:11'),
-(6, 'd92e9db8-790a-11ee-a661-54ab3ab52253', 2500, NULL, '2023-11-01 19:03:19', 64, 18, '2023-11-01 23:03:19', '2023-11-01 23:03:19'),
-(7, 'db33960d-790a-11ee-a661-54ab3ab52253', 2500, NULL, '2023-11-01 19:03:22', 65, 18, '2023-11-01 23:03:22', '2023-11-01 23:03:22'),
-(8, '0fd752be-790b-11ee-a661-54ab3ab52253', 2500, NULL, '2023-11-01 19:04:51', 66, 18, '2023-11-01 23:04:51', '2023-11-01 23:04:51'),
-(9, '19673e76-790b-11ee-a661-54ab3ab52253', 2500, NULL, '2023-11-01 19:05:07', 67, 18, '2023-11-01 23:05:07', '2023-11-01 23:05:07'),
-(10, '2eedae41-790b-11ee-a661-54ab3ab52253', 2500, NULL, '2023-11-01 19:05:43', 68, 18, '2023-11-01 23:05:43', '2023-11-01 23:05:43'),
-(11, '6659625a-790b-11ee-a661-54ab3ab52253', 2500, NULL, '2023-11-01 19:07:16', 69, 18, '2023-11-01 23:07:16', '2023-11-01 23:07:16'),
-(12, 'a116f4a3-790b-11ee-a661-54ab3ab52253', 2500, NULL, '2023-11-01 19:08:54', 70, 18, '2023-11-01 23:08:54', '2023-11-01 23:08:54'),
-(13, '0bfb07b7-790c-11ee-a661-54ab3ab52253', 2500, NULL, '2023-11-01 19:11:54', 71, 18, '2023-11-01 23:11:54', '2023-11-01 23:11:54'),
-(14, '5dd2f35d-790c-11ee-a661-54ab3ab52253', 2500, NULL, '2023-11-01 19:14:11', 72, 18, '2023-11-01 23:14:11', '2023-11-01 23:14:11'),
-(15, '051e3901-790d-11ee-a661-54ab3ab52253', 2500, NULL, '2023-11-01 19:18:52', 73, 18, '2023-11-01 23:18:52', '2023-11-01 23:18:52'),
-(16, '1a0035c2-790d-11ee-a661-54ab3ab52253', 2500, NULL, '2023-11-01 19:19:27', 74, 18, '2023-11-01 23:19:27', '2023-11-01 23:19:27'),
-(17, '698e7d8a-790d-11ee-a661-54ab3ab52253', 2500, NULL, '2023-11-01 19:21:40', 75, 18, '2023-11-01 23:21:40', '2023-11-01 23:21:40'),
-(18, '6618f3d4-790e-11ee-a661-54ab3ab52253', 3100.5, NULL, '2023-11-01 19:28:44', 76, 18, '2023-11-01 23:28:44', '2023-11-01 23:28:44'),
-(19, 'a95be9f3-7944-11ee-9d5f-54ab3ab52253', 3200, NULL, '2023-11-02 01:57:10', 77, 18, '2023-11-02 05:57:10', '2023-11-02 05:57:10');
+(5, 'd41c3090-790a-11ee-a661-54ab3ab52253', 2500, 'Approved', '2023-11-01 19:03:11', 63, 18, '2023-11-01 23:03:11', '2023-11-01 23:03:11'),
+(6, 'd92e9db8-790a-11ee-a661-54ab3ab52253', 2500, 'In Process', '2023-11-01 19:03:19', 64, 18, '2023-11-01 23:03:19', '2023-11-01 23:03:19'),
+(7, 'db33960d-790a-11ee-a661-54ab3ab52253', 2500, 'not approved', '2023-11-01 19:03:22', 65, 18, '2023-11-01 23:03:22', '2023-11-01 23:03:22'),
+(8, '0fd752be-790b-11ee-a661-54ab3ab52253', 2500, 'Approved', '2023-11-01 19:04:51', 66, 18, '2023-11-01 23:04:51', '2023-11-01 23:04:51'),
+(9, '19673e76-790b-11ee-a661-54ab3ab52253', 2500, 'Approved', '2023-11-01 19:05:07', 67, 18, '2023-11-01 23:05:07', '2023-11-01 23:05:07'),
+(10, '2eedae41-790b-11ee-a661-54ab3ab52253', 2500, 'Approved', '2023-11-01 19:05:43', 68, 18, '2023-11-01 23:05:43', '2023-11-01 23:05:43'),
+(12, 'a116f4a3-790b-11ee-a661-54ab3ab52253', 2500, 'Approved', '2023-11-01 19:08:54', 70, 18, '2023-11-01 23:08:54', '2023-11-01 23:08:54'),
+(13, '0bfb07b7-790c-11ee-a661-54ab3ab52253', 2500, 'Approved', '2023-11-01 19:11:54', 71, 18, '2023-11-01 23:11:54', '2023-11-01 23:11:54'),
+(14, '5dd2f35d-790c-11ee-a661-54ab3ab52253', 2500, 'Approved', '2023-11-01 19:14:11', 72, 18, '2023-11-01 23:14:11', '2023-11-01 23:14:11'),
+(15, '051e3901-790d-11ee-a661-54ab3ab52253', 2500, 'not approved', '2023-11-01 19:18:52', 73, 18, '2023-11-01 23:18:52', '2023-11-01 23:18:52'),
+(16, '1a0035c2-790d-11ee-a661-54ab3ab52253', 2500, 'Approved', '2023-11-01 19:19:27', 74, 18, '2023-11-01 23:19:27', '2023-11-01 23:19:27'),
+(18, '6618f3d4-790e-11ee-a661-54ab3ab52253', 3100.5, 'Approved', '2023-11-01 19:28:44', 76, 18, '2023-11-01 23:28:44', '2023-11-01 23:28:44'),
+(19, 'a95be9f3-7944-11ee-9d5f-54ab3ab52253', 3200, 'Approved', '2023-11-02 01:57:10', 77, 18, '2023-11-02 05:57:10', '2023-11-02 05:57:10'),
+(21, 'f3de8cbb-8255-11ee-a811-20c19b1e3984', 900, 'Approved', '2023-11-13 13:52:06', 79, 23, '2023-11-13 18:52:06', '2023-11-13 18:52:06'),
+(22, '6cf89f21-8257-11ee-a811-20c19b1e3984', 3200, 'Approved', '2023-11-13 14:02:39', 80, 23, '2023-11-13 19:02:39', '2023-11-13 19:02:39'),
+(23, 'fceed9c0-8257-11ee-a811-20c19b1e3984', 3200, NULL, '2023-11-13 14:06:40', 81, 23, '2023-11-13 19:06:40', '2023-11-13 19:06:40'),
+(24, '0dcd9166-8258-11ee-a811-20c19b1e3984', 1600, NULL, '2023-11-13 14:07:09', 82, 23, '2023-11-13 19:07:09', '2023-11-13 19:07:09'),
+(25, '64ad5a45-83fd-11ee-a811-20c19b1e3984', 3100.5, NULL, '2023-11-15 16:22:15', 83, 24, '2023-11-15 21:22:15', '2023-11-15 21:22:15'),
+(26, '79f1dce5-83fd-11ee-a811-20c19b1e3984', 3100.5, NULL, '2023-11-15 16:22:51', 84, 24, '2023-11-15 21:22:51', '2023-11-15 21:22:51'),
+(27, '9f0167e9-83fd-11ee-a811-20c19b1e3984', 3100.5, NULL, '2023-11-15 16:23:53', 85, 24, '2023-11-15 21:23:53', '2023-11-15 21:23:53'),
+(29, 'f0aae58b-83fd-11ee-a811-20c19b1e3984', 3100.5, 'Approved', '2023-11-15 16:26:10', 87, 24, '2023-11-15 21:26:10', '2023-11-15 21:26:10');
 
 -- --------------------------------------------------------
 
@@ -259,7 +263,8 @@ INSERT INTO `products` (`id`, `prod_name`, `prod_desc`, `prod_img`, `price`, `qt
 (18, 'Apple Watch Series 9 [GPS 41mm] Smartwatch with Midnight Aluminium Case with Midnight Sport Band. Fitness Tracker, Blood Oxygen & ECG Apps, Water-Resistant - S/M', 'CARBON NEUTRAL ? An aluminum Apple Watch Series 9 paired with the latest Sport Loop is carbon-neutral. Learn more about Apple?s commitment to the environment at apple.com/ca/2030.\nWHY APPLE WATCH SERIES 9 ? Your essential companion for a healthy life is now even more powerful. The S9 chip enables a superbright display and a magical new way to quickly and easily interact with your Apple Watch without touching the screen. Advanced health, safety and activity features provide powerful insights and help when you need it. And redesigned apps in watchOS give you more information at a glance.\nADVANCED HEALTH FEATURES ? Keep an eye on your blood oxygen. Take an ECG anytime. Get notifications if you have an irregular heart rhythm. See how much time you spent in REM, Core or Deep sleep with sleep stages. Temperature sensing provides insights into overall wellbeing and cycle tracking. And take note of your state of mind to help build emotional awareness and resilience.\nA POWERFUL FITNESS PARTNER ? The Workout app gives you a range of ways to train plus advanced metrics for more insights about your workout performance. And Apple Watch comes with three months of Apple Fitness+ free.\nINNOVATIVE SAFETY FEATURES ? Fall Detection and Crash Detection can connect you with emergency services in the event of a hard fall or a severe car crash. And Emergency SOS lets you call for help with the press of a button.\nSIMPLY COMPATIBLE ? It works seamlessly with your Apple devices and services. Unlock your Mac automatically. Get approximate distance and directions to your iPhone with Precision Finding on supported iPhone models. Pay and send money with Apple Pay. Apple Watch requires iPhone XS or later with the latest iOS version.\nEASILY CUSTOMIZABLE ? With watch bands in a range of styles, materials and colours, and fully customizable watch faces, you can change your watch to fit your mood or the moment.', 'sw3.jpg', 700.00, 22, 1, '2023-10-11 23:30:39', '2023-10-11 23:30:39', 6),
 (19, 'Echo (4th Gen) | With premium sound, smart home hub, and Alexa | Glacier White', 'New look, new sound ? Echo delivers clear highs, dynamic mids, and deep bass for rich, detailed sound that automatically adapts to any room.\nVoice control your entertainment ? Stream songs from Amazon Music, Apple Music, SiriusXM, Spotify, Deezer, and more. Plus listen to radio stations, podcasts, and Audible audiobooks.\nReady to help ? Ask Alexa to play music, answer questions, play the news, check the weather, set alarms, control compatible smart home devices, and more.\nSmart home made simple ? With the built-in hub, easily set up compatible Zigbee devices to voice control lights, locks, and sensors.\nFill your home with sound ? With multi-room music, play synchronized music across Echo devices in different rooms. You can also pair your Echo with compatible Fire TV devices to feel scenes come to life with home theater audio, or extend wifi coverage with a compatible eero network so you can say goodbye to drop-offs and buffering.\nConnect with others ? Call almost anyone hands-free. Instantly drop in on other rooms or announce to the whole house that dinner\'s ready.\nDesigned to protect your privacy ? Built with multiple layers of privacy protections and controls, including a microphone off button that electronically disconnects the microphones.', 's1.jpg', 300.00, 21, 1, '2023-10-11 23:30:39', '2023-10-11 23:30:39', 7),
 (20, 'JBL PartyBox 110 Portable Party Speaker with 160W Powerful Sound, Built-in Lights, Up to 12 Hours of Playtime and IPX4 Splashproof Design - Black', 'POWERFUL JBL ORIGINAL PRO SOUND: Whether you?re at home or outdoors, the JBL PartyBox 110 makes your music amazing with two levels of deep, adjustable bass and powerful JBL Original Pro Sound.\nDYNAMIC LIGHT SHOW THAT SYNCS TO THE BEAT: Colors synched to the beat make you want to move your feet, while customizable strobes and patterns dazzle your eyes. It?s a unique, immersive audiovisual experience that transforms any party into a work of art.\n12 HOURS OF PLAYTIME: Power the party all day or all night. With 12 hours of playtime and a built-in rechargeable battery, the beat will go on (and on)!\nIPX4 SPLASHPROOF: Whether your guests are dancing on the beach or sipping drinks by the pool, the JBL PartyBox 110 is IPX4 splashproof so you never have to worry about the party getting too wet and wild.\nMIC AND GUITAR INPUTS: With mic and guitar inputs, you can show your talents as you sing and play along. Not only will you sound great but you?ll look great, too, with the perfect light show for rocking out!', 's2.jpg', 200.00, 15, 1, '2023-10-11 23:30:39', '2023-10-11 23:30:39', 7),
-(21, 'Bluetooth Speaker,MusiBaby Speaker,Outdoor, Portable,Waterproof, Speakers Bluetooth Wireless,Dual Pairing, Bluetooth 5.0,Loud Stereo,Booming Bass,1500 Mins Playtime for Home&Party Speaker Gifts(Black)', 'speaker small, Size only 4.9*2.9in, designed as speakers bluetooth wireless. With 1500 minutes playtime, long enough for any outdoor activities. Special designed as portable speaker.It\'s Ideal gifts for men or women, also affordable gifts for her or him.  Stereo sound with full bass---the speaker delivers immersive sound with rich bass, mids and highs,dynamic sound.Even at maximum volume, in the same way as the live concert performance. You will like MusiBaby?s true 360?Stereo Sound portable speaker.It\'s Ideal gifts for women or men.', 's3.jpg', 900.00, 20, 1, '2023-10-11 23:30:39', '2023-10-11 23:30:39', 7);
+(21, 'Bluetooth Speaker,MusiBaby Speaker,Outdoor, Portable,Waterproof, Speakers Bluetooth Wireless,Dual Pairing, Bluetooth 5.0,Loud Stereo,Booming Bass,1500 Mins Playtime for Home&Party Speaker Gifts(Black)', 'speaker small, Size only 4.9*2.9in, designed as speakers bluetooth wireless. With 1500 minutes playtime, long enough for any outdoor activities. Special designed as portable speaker.It\'s Ideal gifts for men or women, also affordable gifts for her or him.  Stereo sound with full bass---the speaker delivers immersive sound with rich bass, mids and highs,dynamic sound.Even at maximum volume, in the same way as the live concert performance. You will like MusiBaby?s true 360?Stereo Sound portable speaker.It\'s Ideal gifts for women or men.', 's3.jpg', 900.00, 20, 1, '2023-10-11 23:30:39', '2023-10-11 23:30:39', 7),
+(35, 'ttpot', 'here is the description for ttpot isnt it ', '', 99.90, 7, 0, '2023-11-13 18:48:00', '2023-11-13 18:48:00', 7);
 
 -- --------------------------------------------------------
 
@@ -308,7 +313,7 @@ ALTER TABLE `delivery_address`
 --
 ALTER TABLE `order_items`
   ADD PRIMARY KEY (`ID`),
-  ADD KEY `order_id` (`order_id`);
+  ADD KEY `fk_order_items_order` (`order_id`);
 
 --
 -- Indexes for table `order_table`
@@ -342,31 +347,25 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `delivery_address`
 --
 ALTER TABLE `delivery_address`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
-
---
--- AUTO_INCREMENT for table `order_items`
---
-ALTER TABLE `order_items`
-  MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
 
 --
 -- AUTO_INCREMENT for table `order_table`
 --
 ALTER TABLE `order_table`
-  MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `user`
@@ -382,7 +381,7 @@ ALTER TABLE `user`
 -- Constraints for table `order_items`
 --
 ALTER TABLE `order_items`
-  ADD CONSTRAINT `order_items_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `order_table` (`ID`);
+  ADD CONSTRAINT `fk_order_items_order` FOREIGN KEY (`order_id`) REFERENCES `order_table` (`ID`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

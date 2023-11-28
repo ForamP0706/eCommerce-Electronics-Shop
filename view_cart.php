@@ -1,4 +1,5 @@
 <?php
+
 include('includes/header.php');
 include('includes/navbar.php');
 include('database/conn.php');
@@ -93,13 +94,13 @@ if (!empty($cart)) {
            
         </form>
         
-        <a href="checkout.php" class="btn btn-primary">Proceed to Checkout</a>
-        <a href="empty_cart.php" class="btn btn-danger">Empty Cart</a>
+        <a href="checkout.php" class="btn btn-primary mt-2 mb-4 mr-4">Proceed to Checkout</a>
+        <a href="empty_cart.php" class="btn btn-danger mt-2 mb-4 mr-4">Empty Cart</a>
     <?php } else {
         echo 'Your cart is empty.';
     }
     ?>
-    <a href="shop.php" class="btn btn-secondary">Continue Shopping</a>
+    <a href="shop.php" class="btn btn-secondary mt-2 mb-4 mr-4" >Continue Shopping</a>
 </div>
 <?php include('includes/footer.php');
 
