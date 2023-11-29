@@ -219,6 +219,20 @@ INSERT INTO `order_table` (`ID`, `order_id_index`, `order_total_amount`, `order_
 (27, '9f0167e9-83fd-11ee-a811-20c19b1e3984', 3100.5, NULL, '2023-11-15 16:23:53', 85, 24, '2023-11-15 21:23:53', '2023-11-15 21:23:53'),
 (29, 'f0aae58b-83fd-11ee-a811-20c19b1e3984', 3100.5, 'Approved', '2023-11-15 16:26:10', 87, 24, '2023-11-15 21:26:10', '2023-11-15 21:26:10');
 
+
+CREATE TABLE `stripe_payment` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `fullname` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `item_description` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `currency` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `amount` double(10,2) NOT NULL,
+  `transaction_id` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `payment_status` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+   PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
 -- --------------------------------------------------------
 
 --

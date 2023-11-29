@@ -10,7 +10,7 @@ if (!isset($_SESSION['username'])) {
 
 include '../database/conn.php';
 
-// have if statement for Checking if the form is submitted
+// if statement for Checking if the form is submitted or not
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $categoryName = $_POST['categoryName'];
 

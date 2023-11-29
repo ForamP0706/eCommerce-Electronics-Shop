@@ -174,28 +174,6 @@ function get_categories($conn) {
     return $categories;
 }
 
-// function calculateTotalAmountFromCart($conn) {
-//     $totalAmount = 0;
-
-//     if (!empty($_SESSION['cart'])) {
-//         $productIds = array_keys($_SESSION['cart']);
-
-//         // Fetch the prices of the products from the database
-//         $productQuery = "SELECT id, price FROM products WHERE id IN (" . implode(',', $productIds) . ")";
-//         $productResult = $conn->query($productQuery);
-
-//         // Calculate the total amount by summing the prices of the products in the cart
-//         while ($product = $productResult->fetch_assoc()) {
-//             $productId = $product['id'];
-//             $quantity = $_SESSION['cart'][$productId];
-//             $price = $product['price'];
-//             $subtotal = $quantity * $price;
-//             $totalAmount += $subtotal;
-//         }
-//     }
-
-//     return $totalAmount;
-// }
 
 
 ?>

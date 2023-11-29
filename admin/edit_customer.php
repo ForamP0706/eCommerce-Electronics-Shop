@@ -62,9 +62,6 @@ if (isset($_GET['id'])) {
             <label for="last_name">Last Name:</label>
             <input type="text" name="last_name" value="<?= $customer['last_name']; ?>" required>
 
-            <label for="email">Email:</label>
-            <input type="email" name="email" value="<?= $customer['email']; ?>" required>
-
             <button type="submit" class="btn btn-primary btn-sm m-0">Update</button>
             <a href="delete_user.php?id=<?= $customer['id']; ?>" class="btn btn-danger btn-sm m-0" onclick="return confirm('Are you sure you want to delete this user?')">Delete</a>
         </form>

@@ -63,10 +63,6 @@
                     
                     <em><b>- Exclusive Loyalty Benefits :</b></em> [Coming soon] 
                     <p>Unlock special loyalty rewards, discounts, and exclusive offers as a token of our appreciation for choosing us as your tech partner.</p>
-
-                    
-
-
                     </div>
                     
                 </div>

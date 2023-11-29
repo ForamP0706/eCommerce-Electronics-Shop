@@ -1,6 +1,4 @@
 <?php
-// Include necessary files and start the session
-
 include('includes/header.php');
 include('includes/navbar.php');
 session_start();
@@ -10,7 +8,6 @@ if (!isset($_SESSION['username'])) {
 }
 include '../database/conn.php';
 include '../includes/functions.php';
-
 
 // Retrieving orders
 $orders = get_orders($conn);

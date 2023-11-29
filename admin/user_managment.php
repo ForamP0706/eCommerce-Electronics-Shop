@@ -52,7 +52,6 @@ $customers = get_customers($conn);
                             <th scope="col">ID</th>
                             <th scope="col">First Name</th>
                             <th scope="col">Last Name</th>
-                            <!-- <th scope="col">Email</th> -->
                             <th scope="col">Actions</th>
                         </tr>
                     </thead>
@@ -69,7 +68,6 @@ $customers = get_customers($conn);
                                         <a href="edit_customer.php?id=<?= $customer['id']; ?>" class="btn btn-primary btn-sm">Edit</a>
                                     </form>
 
-                                  
                                 </td>
                             </tr>
                         <?php endforeach; ?>

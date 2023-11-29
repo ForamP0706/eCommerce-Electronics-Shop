@@ -1,163 +1,9 @@
-<?php 
-
-// include('includes/header.php');
-// include('includes/navbar.php');
-?>
-<?php
-
-
-// $firstName = $lastName = $email = $password = $repassword = $phone = $address1 = $city = $province = $zip = '';
-
-// $firstNameErr = $lastNameErr = $emailErr = $passwordErr = $repasswordErr = $phoneErr = $address1Err = $unitNumberErr = $cityErr = $provinceErr = $zipErr = '';
-
-// if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-//   $unitNumber = $_POST["unitnumber"];
-
-//   if (empty($_POST["fname"])) {
-//     $firstNameErr = "First Name is required";
-// } else {
-//     $firstName = test_input($_POST["fname"]);
-    
-//     if (!preg_match("/^[a-zA-Z ]*$/", $firstName)) {
-//         $firstNameErr = "Only letters and white space allowed";
-//     } else {
-       
-//         $firstName = strtoupper($firstName);
-//     }
-// }
-
-//   if (empty($_POST["lname"])) {
-//     $lastNameErr = "Last Name is required";
-//   } else {
-//     $lastName = test_input($_POST["lname"]);
-
-    
-//     if (!preg_match("/^[a-zA-Z ]*$/", $lastName)) {
-//       $lastNameErr = "Only letters and white space allowed";
-//     }
-//     else {
-       
-//       $lastName = strtoupper($lastName);
-//   }
-//   }
-
-  
-//   if (empty($_POST["uemail"])) {
-//     $emailErr = "Email is required";
-//   } else {
-//     $email = test_input($_POST["uemail"]);
-
-    
-//     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-//       $emailErr = "Invalid email format";
-//     }
-//   }
-
-  
-//   if (empty($_POST["upassword"])) {
-//     $passwordErr = "Password is required";
-//   } else {
-//     $password = test_input($_POST["upassword"]);
-  
-//     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-//   }
-
-
-
-  
-//   if (empty($_POST["reupassword"])) {
-//     $repasswordErr = "Please confirm your password";
-//   } else {
-//     $repassword = test_input($_POST["reupassword"]);
-
-//     if ($repassword !== $password) {
-//       $repasswordErr = "Passwords do not match";
-//     }
-//   }
-
-  
-//   if (!empty($_POST["phone"])) {
-//     $phone = test_input($_POST["phone"]);
-
-//     if (!preg_match("/^\d{3}-\d{3}-\d{4}$/", $phone)) {
-//       $phoneErr = "Invalid phone number format (e.g., 123-456-7890)";
-//     }
-//   }
-
-
-//   if (!empty($_POST["address1"])) {
-//     $address1 = test_input($_POST["address1"]);
-//   } else {
-       
-//     $address1 = strtoupper($address1);
-// }
-
-//   if (!empty($_POST["inputCity"])) {
-//     $city = test_input($_POST["inputCity"]);
-//   }
-//   else {
-//   $city = strtoupper($city);}
-
-  
-//   if (!empty($_POST["province"])) {
-//     $province = test_input($_POST["province"]);
-//   }else {
-       
-//     $province = strtoupper($province);
-// }
-  
-
- 
-//   if (!empty($_POST["inputZip"])) {
-//     $zip = test_input($_POST["inputZip"]);
-
-
-//     if (!preg_match("/^\d{5}$/", $inputZip)) {
-//       $zipErr = "Invalid zip code format (e.g., 12345)";
-//     }
-//     else {
-       
-//       $zip = strtoupper($inputZip);
-//   }
-//   }
-
-
-//   include 'database/conn.php';
-
-
-//   $stmt = $conn->prepare("INSERT INTO customer (first_name, last_name, email, password, phone, address1, unit_number, city, province, zip) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-//   $stmt->bind_param("ssssssssss", $firstName, $lastName, $email, $hashedPassword, $phone, $address1, $unitNumber, $city, $province, $zip);
-
-//   if ($stmt->execute()) {
-//     echo "Registration successful!";
-//     header('Location: index.php');
-//     exit();
-//   } else {
-//     header('Location: register.php');
-//     exit();
-//   }
-// }
-
-
-
-// function test_input($data)
-// {
-//   $data = trim($data);
-//   $data = stripslashes($data);
-//   $data = htmlspecialchars($data);
-//   return $data;
-// }
-?>
-<?php
-include('includes/header.php');
+<?php include('includes/header.php');
 include('includes/navbar.php');
 ?>
-
 <?php
 
-$firstName = $lastName = $email = $password = $repassword = $phone = $address1 = $unitNumber = $city = $province = $zip = '';
-
+$firstName = $lastName = $email = $password = $repassword = $phone = $address1 = $city = $province = $zip = '';
 $firstNameErr = $lastNameErr = $emailErr = $passwordErr = $repasswordErr = $phoneErr = $address1Err = $unitNumberErr = $cityErr = $provinceErr = $zipErr = '';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -166,26 +12,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   if (empty($_POST["fname"])) {
     $firstNameErr = "First Name is required";
-  } else {
+} else {
     $firstName = test_input($_POST["fname"]);
-
+    
     if (!preg_match("/^[a-zA-Z ]*$/", $firstName)) {
-      $firstNameErr = "Only letters and white space allowed";
+        $firstNameErr = "Only letters and white space allowed";
     } else {
-      $firstName = strtoupper($firstName);
+       
+        $firstName = strtoupper($firstName);
     }
-  }
+}
 
   if (empty($_POST["lname"])) {
     $lastNameErr = "Last Name is required";
   } else {
     $lastName = test_input($_POST["lname"]);
 
+    
     if (!preg_match("/^[a-zA-Z ]*$/", $lastName)) {
       $lastNameErr = "Only letters and white space allowed";
-    } else {
-      $lastName = strtoupper($lastName);
     }
+    else {
+       
+      $lastName = strtoupper($lastName);
+  }
   }
 
   if (empty($_POST["uemail"])) {
@@ -193,6 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   } else {
     $email = test_input($_POST["uemail"]);
 
+    
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
       $emailErr = "Invalid email format";
     }
@@ -202,6 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $passwordErr = "Password is required";
   } else {
     $password = test_input($_POST["upassword"]);
+  
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
   }
 
@@ -226,32 +78,39 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   if (!empty($_POST["address1"])) {
     $address1 = test_input($_POST["address1"]);
   } else {
+       
     $address1 = strtoupper($address1);
-  }
+}
 
   if (!empty($_POST["inputCity"])) {
     $city = test_input($_POST["inputCity"]);
-  } else {
-    $city = strtoupper($city);
   }
+  else {
+  $city = strtoupper($city);}
 
+  
   if (!empty($_POST["province"])) {
     $province = test_input($_POST["province"]);
-  } else {
+  }else {
+       
     $province = strtoupper($province);
-  }
-
+}
+  
   if (!empty($_POST["inputZip"])) {
     $zip = test_input($_POST["inputZip"]);
 
-    if (!preg_match("/^\d{5}$/", $zip)) {
+
+    if (!preg_match("/^\d{5}$/", $inputZip)) {
       $zipErr = "Invalid zip code format (e.g., 12345)";
-    } else {
-      $zip = strtoupper($zip);
     }
+    else {
+       
+      $zip = strtoupper($inputZip);
+  }
   }
 
   include 'database/conn.php';
+
 
   $stmt = $conn->prepare("INSERT INTO customer (first_name, last_name, email, password, phone, address1, unit_number, city, province, zip) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
   $stmt->bind_param("ssssssssss", $firstName, $lastName, $email, $hashedPassword, $phone, $address1, $unitNumber, $city, $province, $zip);
@@ -266,6 +125,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   }
 }
 
+
 function test_input($data)
 {
   $data = trim($data);
@@ -273,7 +133,6 @@ function test_input($data)
   $data = htmlspecialchars($data);
   return $data;
 }
-
 ?>
 
 <div class="container mt-4 mb-4">
@@ -344,8 +203,6 @@ function test_input($data)
 </div>
 </div>
 
-
-<?php 
-include('includes/footer.php');
+<?php include('includes/footer.php');
 
 ?>

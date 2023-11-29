@@ -1,6 +1,4 @@
-<?php 
-
-include('includes/header.php');
+<?php include('includes/header.php');
 include('includes/navbar.php');
 
 $sql = "SELECT * FROM products where active = 1";
@@ -40,7 +38,6 @@ if (isset($_GET['sort'])) {
         max-height: 100%;
     }
     .img-parent {
-        margin-top:20px;
         width: 100%;
         aspect-ratio: 1;
         max-height: 300px;
@@ -113,11 +110,10 @@ if (isset($_GET['sort'])) {
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
                     echo '<div class="col-md-4">';
-                    echo '<div class="card mb-4">';                  
+                    echo '<div class="card">';
                     echo '<div class="img-parent"><img class="product-img" src="assets/images/products/' . $row['prod_img'] . '" alt="' . $row['prod_name'] . '"></div>';
                     echo '<div class="card-body">';
-                    $ProductName = substr($row['prod_name'], 0, 30);
-                    echo '<h5 class="card-title"><a href="product_description.php?product_id=' . $row['id'] . '">' . $ProductName . '</a></h5>';              
+                    echo '<h5 class="card-title"><a href="product_description.php?product_id=' . $row['id'] . '">' . $row['prod_name'] . '</a></h5>';              
                     echo '<p class="card-text">Price: $' . $row['price'] . '</p>';
                     echo '</div>';
                     echo '</div>';
@@ -129,6 +125,5 @@ if (isset($_GET['sort'])) {
     </div>
 </section>
 <?php 
-
 include('includes/footer.php');
 ?>
