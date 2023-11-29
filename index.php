@@ -47,7 +47,7 @@ include('includes/navbar.php');
         <div class="row">
             <?php
             
-            include('database/conn.php');
+            include_once('database/conn.php');
             $sql = "SELECT * FROM products where category_id=2";
             $result = $conn->query($sql);
 
@@ -57,7 +57,11 @@ include('includes/navbar.php');
                     echo '<div class="card">';
                     echo '<img class="card-img-top" src="assets/images/products/' . $row['prod_img'] . '" alt="' . $row['prod_name'] . '">';
                     echo '<div class="card-body">';
-                    echo '<h5 class="card-title"><a href="product_description.php?product_id=' . $row['id'] . '">' . $row['prod_name'] . '</a></h5>';                              
+                    $href = 'product_description.php?product_id=' . $row['id'];
+                    if (!isset($_SESSION['username'])) {
+                        $href = 'javascript:loginClick()';
+                    }
+                    echo '<h5 class="card-title"><a href="' . $href . '">' . $row['prod_name'] . '</a></h5>';                              
                     echo '<p class="card-text">Price: $' . $row['price'] . '</p>';
                     echo '</div>';
                     echo '</div>';
@@ -68,6 +72,12 @@ include('includes/navbar.php');
         </div>
     </div>
 </section>
+<script>
+    function loginClick() {
+        alert('Login first');
+        window.location.href = 'login.php';
+    }
+</script>
         <?php include('includes/footer.php');
 
 ?>

@@ -5,28 +5,6 @@ include('includes/functions.php');
 $categories = get_categories($conn);
 $baseUrl = "/eCommerce-Electronics-Shop";
 
-// Initialize the cart array in the session if it doesn't exist
-if (!isset($_SESSION['cart'])) {
-    $_SESSION['cart'] = array();
-}
-
-// Add a product to the cart
-if (isset($_POST['add_to_cart']) && isset($_POST['product_id'])) {
-    $product_id = $_POST['product_id'];
-    $quantity = isset($_POST['quantity']) ? intval($_POST['quantity']) : 1;
-
-    // Check if the product is already in the cart
-    if (array_key_exists($product_id, $_SESSION['cart'])) {
-        // Increment the quantity if the product is already in the cart
-        $_SESSION['cart'][$product_id] += $quantity;
-    } else {
-        // Add the product to the cart with the given quantity
-        $_SESSION['cart'][$product_id] = $quantity;
-    }
-}
-
-// Calculate the total number of items in the cart
-$cartItemCount = array_sum($_SESSION['cart']);
 ?>
 <style>
     .navbar-nav {
@@ -107,9 +85,7 @@ $cartItemCount = array_sum($_SESSION['cart']);
     <button class="btn border-white text-white" type="submit">
         <i class="bi-cart-fill me-1"></i>
         Cart
-        <span class="badge bg-dark text-white ms-1 rounded-pill">
-            <?php echo $cartItemCount; ?>
-        </span>
+        <span class="badge bg-dark text-white ms-1 rounded-pill" id="cart-item-count"></span>
     </button>
     <p class="text-white" style="margin: 5px;">
     <?php if (isset($_SESSION['username'])) {
@@ -120,3 +96,6 @@ $cartItemCount = array_sum($_SESSION['cart']);
         </div>
     </div>
 </nav>
+<script>
+    document.getElementById('cart-item-count').innerText = '' + Object.keys(JSON.parse(localStorage.getItem('cart') || '{}')).length;
+</script>
