@@ -29,8 +29,8 @@ if (isset($_GET['product_id'])) {
         <label for="quantity">Quantity:</label>
         <input type="number" name="quantity" id="quantity" value="1">
     </div>
-    <button type="submit" class="btn btn-primary">Add to Cart</button>
-    <a href="shop.php" class="btn btn-secondary">Continue Shopping</a>
+    <button type="submit" class="btn btn-primary mt-2 mb-4 mr-4">Add to Cart</button>
+                        <a href="shop.php" class="btn btn-secondary mt-2 mb-4 mr-4">Continue Shopping</a>
 </form>
 
 <script>

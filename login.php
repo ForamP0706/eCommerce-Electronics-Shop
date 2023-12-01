@@ -2,7 +2,7 @@
 include 'includes/navbar.php';
 ?>
 <?php
-include 'database/conn.php';
+include_once 'database/conn.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];

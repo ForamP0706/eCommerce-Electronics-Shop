@@ -110,10 +110,11 @@ if (isset($_GET['sort'])) {
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
                     echo '<div class="col-md-4">';
-                    echo '<div class="card">';
+                    echo '<div class="card mb-4">';                  
                     echo '<div class="img-parent"><img class="product-img" src="assets/images/products/' . $row['prod_img'] . '" alt="' . $row['prod_name'] . '"></div>';
                     echo '<div class="card-body">';
-                    echo '<h5 class="card-title"><a href="product_description.php?product_id=' . $row['id'] . '">' . $row['prod_name'] . '</a></h5>';              
+                    $ProductName = substr($row['prod_name'], 0, 30);
+                    echo '<h5 class="card-title"><a href="product_description.php?product_id=' . $row['id'] . '">' . $ProductName . '</a></h5>';              
                     echo '<p class="card-text">Price: $' . $row['price'] . '</p>';
                     echo '</div>';
                     echo '</div>';

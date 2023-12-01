@@ -7,6 +7,7 @@ include('includes/navbar.php');
 <div class="container mt-5">
     <h1>Checkout</h1>
 <div id="form-parent">
+    
         <form name="first">
           
             <div class="form-group">
@@ -46,7 +47,7 @@ include('includes/navbar.php');
 
             <button id="submit-button" class="pay">
                 <div class="spinner hidden" id="spinner"></div>
-                <span id="submit-text">Complete Order</span>
+                <span id="submit-text mb-4 mt-4">Complete Order</span>
             </button>
         </form>
         <div id="payment_processing" class="hidden">
@@ -63,7 +64,7 @@ include('includes/navbar.php');
         <script src="assets/js/stripe-checkout.js" defer></script>
 </div>
 
-    <a href="view_cart.php" class="btn btn-secondary">View Cart</a>
+    <a href="view_cart.php" class="btn btn-secondary mb-4 mt-4">View Cart</a>
 </div>
 <script>
     if(!localStorage.getItem('cart')){

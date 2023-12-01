@@ -11,6 +11,7 @@ $baseUrl = "/eCommerce-Electronics-Shop";
         display: flex;
         flex-direction: row;
         align-items: center;
+       
     }
     .hover-div {
     position: relative;
@@ -28,6 +29,7 @@ $baseUrl = "/eCommerce-Electronics-Shop";
 }
 .hover-div span{
     padding: 8px;
+    
 }
 
 </style>
@@ -39,7 +41,7 @@ $baseUrl = "/eCommerce-Electronics-Shop";
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4 mr-4">
                 <li class="nav-item"><a class="nav-link text-white active" aria-current="page" href="index.php">Home</a></li>
                 <?php
                     if (isset($_SESSION['username'])) {
@@ -57,10 +59,10 @@ $baseUrl = "/eCommerce-Electronics-Shop";
                 </li>
                 <?php } ?>
                 <li class="nav-item">
-                    <a href="about_us.php" class="nav-link text-white" target="">About Us</a>
+                    <a href="about_us.php" class="nav-link text-white" target="">About Us</a>
                 </li>
                 <li class="nav-item">
-                    <a href="contact_us.php" class="nav-link text-white" target="">Contact Us</a>
+                    <a href="contact_us.php" class="nav-link text-white" target="">Contact Us</a>
                 </li>
                 
                 <?php
