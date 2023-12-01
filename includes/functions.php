@@ -42,6 +42,21 @@ function get_customer_by_id($conn, $customer_id) {
 
     return $customer;
 }
+function get_customer_name($conn, $customer_id) {
+    $query = "SELECT * FROM customer WHERE id = $customer_id";
+    $result = mysqli_query($conn, $query);
+
+    if (!$result) {
+        die("Query failed: " . mysqli_error($conn));
+    }
+
+    $customer = mysqli_fetch_assoc($result);
+
+   $full_name = isset($customer['first_name']) ? $customer['first_name'] : '';
+   $full_name .= isset($customer['last_name']) ? ' ' . $customer['last_name'] : '';
+
+   return $full_name !== '' ? $full_name : "Customer not found";
+}
 function update_customer($conn, $customer_id, $first_name, $last_name, $email, $password) {
     // here we customer table 
     $query = "UPDATE customer SET first_name = '$first_name', last_name = '$last_name', email = '$email', password = '$password' WHERE id = $customer_id";
@@ -158,6 +173,19 @@ function get_category_by_id($conn, $id) {
         return false;
     }
 }
+function get_category_name($conn, $category_id) {
+    $query = "SELECT * FROM categories WHERE id = $category_id";
+    $result = mysqli_query($conn, $query);
+
+    if (!$result) {
+        die("Query failed: " . mysqli_error($conn));
+    }
+
+    $category = mysqli_fetch_assoc($result);
+
+  
+    return $category['category_name'];
+}
 
 
 function get_categories($conn) {
@@ -173,7 +201,5 @@ function get_categories($conn) {
 
     return $categories;
 }
-
-
 
 ?>
