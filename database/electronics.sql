@@ -179,6 +179,15 @@ INSERT INTO `order_items` (`ID`, `order_id`, `product_id`, `quantity`, `product_
 --
 -- Table structure for table `order_table`
 --
+CREATE TABLE `order_tax` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `order_id` BIGINT(20) NOT NULL,
+  `tax_amount` DOUBLE NOT NULL,
+  `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `fk_order_tax_order` FOREIGN KEY (`order_id`) REFERENCES `order_table` (`ID`) ON DELETE CASCADE
+);
 
 CREATE TABLE `order_table` (
   `ID` bigint(20) NOT NULL,
