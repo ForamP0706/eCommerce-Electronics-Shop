@@ -45,38 +45,62 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['checkout'])) {
           $zip = strtoupper($zip);
       }
       }
-   if (!empty($cartProducts) && !empty($delivery_address) && !empty($city) && !empty($province) && !empty($zip)) {
+      if (!empty($cartProducts) && !empty($delivery_address) && !empty($city) && !empty($province) && !empty($zip)) {
+        
         $insertAddressQuery = "INSERT INTO delivery_address (address, unit_number, city, province, zip)
         VALUES (?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($insertAddressQuery);
         $stmt->bind_param("sssss", $delivery_address, $unit_number, $city, $province, $zip);
         $stmt->execute();
 
+        
         $delivery_address_id = $stmt->insert_id;
 
+        
         $insert_order_query = "INSERT INTO order_table (order_id_index,order_total_amount, delivery_address_id, customer_id) VALUES (UUID(),?, ?, ?)";
         $stmt = $conn->prepare($insert_order_query);
         $order_total_amount = calculateOrderTotal($cartProducts);
         $stmt->bind_param("dii", $order_total_amount, $delivery_address_id, $customer_id);
         $stmt->execute();
 
+        
         $order_id = $stmt->insert_id;
+
+        
         $insert_order_item_query = "INSERT INTO order_items (order_id, product_id, quantity, product_price) VALUES (?, ?, ?,?)";
         $stmt = $conn->prepare($insert_order_item_query);
-        foreach ($cart as $product_id => $quantity ) {
-            $productPrice = getProductPrice($product_id);  
-    
+        foreach ($cart as $product_id => $quantity) {
+            $productPrice = getProductPrice($product_id);
+
             $stmt->bind_param("iiid", $order_id, $product_id, $quantity, $productPrice);
-           
+            $stmt->execute();
         }
+
+        
+        $insert_order_tax_query = "INSERT INTO order_tax (order_id, tax_amount) VALUES (?, ?)";
+        $stmt = $conn->prepare($insert_order_tax_query);
+        $tax_amount = calculateTax($order_total_amount); 
+        $stmt->bind_param("id", $order_id, $tax_amount);
+        $stmt->execute();
     }
 }
+
+
 function test_input($data)
 {
   $data = trim($data);
   $data = stripslashes($data);
   $data = htmlspecialchars($data);
   return $data;
+}
+function calculateTax($order_total_amount) {
+
+  $tax_rate = 0.13;
+  
+  
+  $tax_amount = $order_total_amount * $tax_rate;
+
+  return $tax_amount;
 }
 
 function calculateOrderTotal($cartProducts) {
