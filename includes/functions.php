@@ -42,6 +42,19 @@ function get_customer_by_id($conn, $customer_id) {
 
     return $customer;
 }
+function get_customer_details($conn, $customerId) {
+    $query = "SELECT * FROM customer WHERE id = ?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param('i', $customerId);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    
+    if ($result->num_rows > 0) {
+        return $result->fetch_assoc();
+    } else {
+        return false;
+    }
+}
 function get_customer_name($conn, $customer_id) {
     $query = "SELECT * FROM customer WHERE id = $customer_id";
     $result = mysqli_query($conn, $query);
@@ -108,7 +121,19 @@ function get_order_details($conn, $orderId) {
         return false; 
     }
 }
-
+function get_order_tax($conn, $orderId) {
+    $query = "SELECT * FROM order_tax WHERE order_id = ?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param('i', $orderId);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    
+    if ($result->num_rows > 0) {
+        return $result->fetch_assoc();
+    } else {
+        return false;
+    }
+}
 
 function update_order_status($conn, $orderId, $newStatus) {
     // Prepare the SQL query
@@ -130,7 +155,19 @@ function update_order_status($conn, $orderId, $newStatus) {
 }
 
 
-
+function get_address_details($conn, $addressId) {
+    $query = "SELECT * FROM delivery_address WHERE id = ?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param('i', $addressId);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    
+    if ($result->num_rows > 0) {
+        return $result->fetch_assoc();
+    } else {
+        return false;
+    }
+}
 function delete_order($conn, $orderId) {
     
     $orderId = mysqli_real_escape_string($conn, $orderId);
