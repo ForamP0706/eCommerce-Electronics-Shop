@@ -83,6 +83,7 @@ $baseUrl = "/eCommerce-Electronics-Shop";
                 </li>
                 <?php } ?>
             </ul>
+            <?php if (isset($_SESSION['username'])) { ?>
             <form class="d-flex" action="view_cart.php" method="get">
     <button class="btn border-white text-white" type="submit">
         <i class="bi-cart-fill me-1"></i>
@@ -90,7 +91,7 @@ $baseUrl = "/eCommerce-Electronics-Shop";
         <span class="badge bg-dark text-white ms-1 rounded-pill" id="cart-item-count"></span>
     </button>
     <p class="text-white" style="margin: 5px;">
-    <?php if (isset($_SESSION['username'])) {
+    <?php
             echo 'Welcome! ' . $_SESSION['first_name'] . ' ' . $_SESSION['last_name'];
         }?>
 </p>

@@ -47,7 +47,7 @@ include('includes/navbar.php');
 
             <button id="submit-button" class="pay">
                 <div class="spinner hidden" id="spinner"></div>
-                <span id="submit-text mb-4 mt-4">Complete Order</span>
+                <span id="submit-text">Complete Order</span>
             </button>
         </form>
         <div id="payment_processing" class="hidden">

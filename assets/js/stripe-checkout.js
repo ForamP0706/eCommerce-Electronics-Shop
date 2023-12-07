@@ -1,4 +1,5 @@
-let publishable_key = document.querySelector("#publishable_key").value;
+document.addEventListener('DOMContentLoaded', () => {
+    let publishable_key = document.querySelector("#publishable_key").value;
 
 const stripe = Stripe(publishable_key);
 
@@ -192,3 +193,4 @@ function paymentReinitiate() {
 function reinitiateStripe() {
     window.location.href=window.location.href.split('?')[0];
 }
+});
