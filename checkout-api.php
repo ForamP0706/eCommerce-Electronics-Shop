@@ -8,7 +8,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['checkout'])) {
     $city = $_POST['city'];
     $province = $_POST['province'];
     $zip = $_POST['zip'];
-
     if (!empty($_POST["delivery_address"])) {
         $delivery_address = test_input($_POST["delivery_address"]);
       } else {
@@ -77,11 +76,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['checkout'])) {
         }
 
         
-        $insert_order_tax_query = "INSERT INTO order_tax (order_id, tax_amount) VALUES (?, ?)";
-        $stmt = $conn->prepare($insert_order_tax_query);
-        $tax_amount = calculateTax($order_total_amount); 
-        $stmt->bind_param("id", $order_id, $tax_amount);
-        $stmt->execute();
+        // $insert_order_tax_query = "INSERT INTO order_tax (order_id, tax_amount) VALUES (?, ?)";
+        // $stmt = $conn->prepare($insert_order_tax_query);
+        // $tax_amount = calculateTax($order_total_amount); 
+        // $stmt->bind_param("id", $order_id, $tax_amount);
+        // $stmt->execute();
     }
 }
 
@@ -93,15 +92,15 @@ function test_input($data)
   $data = htmlspecialchars($data);
   return $data;
 }
-function calculateTax($order_total_amount) {
+// function calculateTax($order_total_amount) {
 
-  $tax_rate = 0.13;
+//   $tax_rate = 0.13;
   
   
-  $tax_amount = $order_total_amount * $tax_rate;
+//   $tax_amount = $order_total_amount * $tax_rate;
 
-  return $tax_amount;
-}
+//   return $tax_amount;
+// }
 
 function calculateOrderTotal($cartProducts) {
     $total = 0.0; 
