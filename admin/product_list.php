@@ -33,14 +33,21 @@ $categories = get_categories($conn);
                             <td class="text-wrap"><?= $product['id']; ?></td>
                             <td class="text-wrap"><?= $product['prod_name']; ?></td>
                             <td class="text-wrap"><?= $product['price']; ?></td>
-                            <td class="text-wrap"><?= $product['category_id']; ?></td>
+                            <td class="text-wrap">
+                                <?php
+                                // Fetch category name based on category_id
+                                $category_id = $product['category_id'];
+                                $category_name = get_category_name($conn, $category_id);
+                                echo $category_name;
+                                ?>
+                            </td>
                             <td class="text-wrap"><?= $product['qty']; ?>
                                 <div>
                                     <!-- form to update the quantity value  -->
                                     <form method="post" action="update_quantity.php">
                                         <input type="hidden" name="product_id" value="<?= $product['id']; ?>">
                                         <input type="number" name="new_quantity" min="0" required placeholder="Enter new quantity">
-                                        <button type="submit" class="btn btn-primary btn-sm">Update</button>
+                                        <button type="submit" class="btn btn-primary btn-sm mt-3">Update</button>
                                     </form>
                                 </div>
                             </td>
