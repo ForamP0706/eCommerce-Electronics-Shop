@@ -4,7 +4,7 @@
 
 ?>
  <?php
-include('database/conn.php');
+// include('database/conn.php');
 $customer_id = isset($_SESSION['customer_id']) ? $_SESSION['customer_id'] : null;
 
 if ($customer_id) {
