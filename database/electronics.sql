@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 02, 2023 at 02:33 AM
+-- Generation Time: Nov 20, 2023 at 05:17 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -35,22 +35,21 @@ CREATE TABLE `categories` (
   `category_position` int(11) NOT NULL,
   `active` tinyint(1) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `is_enabled` tinyint(1) DEFAULT 1
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `categories`
 --
 
-INSERT INTO `categories` (`id`, `category_name`, `category_slug`, `category_parent`, `category_position`, `active`, `created_at`, `updated_at`, `is_enabled`) VALUES
-(1, 'Laptops', 'Laptops', 'Laptops', 1, 1, '2023-10-11 23:25:20', '2023-10-11 23:25:31', 0),
-(2, 'CellPhones', 'CellPhones', 'CellPhones', 2, 1, '2023-10-11 23:25:06', '2023-10-11 23:25:06', 0),
-(3, 'TVs', 'TVs', 'TVs', 3, 1, '2023-10-11 23:24:51', '2023-10-11 23:24:51', 0),
-(4, 'Headphones', 'Headphones', 'Headphones', 4, 1, '2023-10-11 23:24:34', '2023-10-11 23:24:34', 0),
-(5, 'Printers', 'Printers', 'Printers', 5, 1, '2023-10-11 23:24:01', '2023-10-11 23:24:01', 1),
-(6, 'Smart Watch', 'Smart Watch', 'Smart Watch', 6, 1, '2023-10-11 23:22:15', '2023-10-11 23:22:15', 1),
-(7, 'Speakers', 'Speakers', 'Speakers', 7, 1, '2023-10-11 23:23:28', '2023-10-11 23:23:28', 1);
+INSERT INTO `categories` (`id`, `category_name`, `category_slug`, `category_parent`, `category_position`, `active`, `created_at`, `updated_at`) VALUES
+(1, 'Laptops', 'Laptops', 'Laptops', 1, 1, '2023-10-11 23:25:20', '2023-10-11 23:25:31'),
+(2, 'CellPhones', 'CellPhones', 'CellPhones', 2, 1, '2023-10-11 23:25:06', '2023-10-11 23:25:06'),
+(3, 'TVs', 'TVs', 'TVs', 3, 1, '2023-10-11 23:24:51', '2023-10-11 23:24:51'),
+(4, 'Headphones', 'Headphones', 'Headphones', 4, 1, '2023-10-11 23:24:34', '2023-10-11 23:24:34'),
+(5, 'Printers', 'Printers', 'Printers', 5, 1, '2023-10-11 23:24:01', '2023-10-11 23:24:01'),
+(6, 'Smart Watch', 'Smart Watch', 'Smart Watch', 6, 1, '2023-10-11 23:22:15', '2023-10-11 23:22:15'),
+(7, 'Speakers', 'Speakers', 'Speakers', 7, 1, '2023-10-11 23:23:28', '2023-10-11 23:23:28');
 
 -- --------------------------------------------------------
 
@@ -180,6 +179,15 @@ INSERT INTO `order_items` (`ID`, `order_id`, `product_id`, `quantity`, `product_
 --
 -- Table structure for table `order_table`
 --
+CREATE TABLE `order_tax` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `order_id` BIGINT(20) NOT NULL,
+  `tax_amount` DOUBLE NOT NULL,
+  `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `fk_order_tax_order` FOREIGN KEY (`order_id`) REFERENCES `order_table` (`ID`) ON DELETE CASCADE
+);
 
 CREATE TABLE `order_table` (
   `ID` bigint(20) NOT NULL,
@@ -220,19 +228,19 @@ INSERT INTO `order_table` (`ID`, `order_id_index`, `order_total_amount`, `order_
 (27, '9f0167e9-83fd-11ee-a811-20c19b1e3984', 3100.5, NULL, '2023-11-15 16:23:53', 85, 24, '2023-11-15 21:23:53', '2023-11-15 21:23:53'),
 (29, 'f0aae58b-83fd-11ee-a811-20c19b1e3984', 3100.5, 'Approved', '2023-11-15 16:26:10', 87, 24, '2023-11-15 21:26:10', '2023-11-15 21:26:10');
 
--- --------------------------------------------------------
 
---
--- Table structure for table `order_tax`
---
-
-CREATE TABLE `order_tax` (
-  `id` int(11) NOT NULL,
-  `order_id` bigint(20) NOT NULL,
-  `tax_amount` double NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+CREATE TABLE `stripe_payment` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `fullname` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `item_description` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `currency` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `amount` double(10,2) NOT NULL,
+  `transaction_id` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `payment_status` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+   PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -280,24 +288,6 @@ INSERT INTO `products` (`id`, `prod_name`, `prod_desc`, `prod_img`, `price`, `qt
 (20, 'JBL PartyBox 110 Portable Party Speaker with 160W Powerful Sound, Built-in Lights, Up to 12 Hours of Playtime and IPX4 Splashproof Design - Black', 'POWERFUL JBL ORIGINAL PRO SOUND: Whether you?re at home or outdoors, the JBL PartyBox 110 makes your music amazing with two levels of deep, adjustable bass and powerful JBL Original Pro Sound.\nDYNAMIC LIGHT SHOW THAT SYNCS TO THE BEAT: Colors synched to the beat make you want to move your feet, while customizable strobes and patterns dazzle your eyes. It?s a unique, immersive audiovisual experience that transforms any party into a work of art.\n12 HOURS OF PLAYTIME: Power the party all day or all night. With 12 hours of playtime and a built-in rechargeable battery, the beat will go on (and on)!\nIPX4 SPLASHPROOF: Whether your guests are dancing on the beach or sipping drinks by the pool, the JBL PartyBox 110 is IPX4 splashproof so you never have to worry about the party getting too wet and wild.\nMIC AND GUITAR INPUTS: With mic and guitar inputs, you can show your talents as you sing and play along. Not only will you sound great but you?ll look great, too, with the perfect light show for rocking out!', 's2.jpg', 200.00, 15, 1, '2023-10-11 23:30:39', '2023-10-11 23:30:39', 7),
 (21, 'Bluetooth Speaker,MusiBaby Speaker,Outdoor, Portable,Waterproof, Speakers Bluetooth Wireless,Dual Pairing, Bluetooth 5.0,Loud Stereo,Booming Bass,1500 Mins Playtime for Home&Party Speaker Gifts(Black)', 'speaker small, Size only 4.9*2.9in, designed as speakers bluetooth wireless. With 1500 minutes playtime, long enough for any outdoor activities. Special designed as portable speaker.It\'s Ideal gifts for men or women, also affordable gifts for her or him.  Stereo sound with full bass---the speaker delivers immersive sound with rich bass, mids and highs,dynamic sound.Even at maximum volume, in the same way as the live concert performance. You will like MusiBaby?s true 360?Stereo Sound portable speaker.It\'s Ideal gifts for women or men.', 's3.jpg', 900.00, 20, 1, '2023-10-11 23:30:39', '2023-10-11 23:30:39', 7),
 (35, 'ttpot', 'here is the description for ttpot isnt it ', '', 99.90, 7, 0, '2023-11-13 18:48:00', '2023-11-13 18:48:00', 7);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `stripe_payment`
---
-
-CREATE TABLE `stripe_payment` (
-  `id` int(11) NOT NULL,
-  `fullname` varchar(50) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `item_description` varchar(250) NOT NULL,
-  `currency` varchar(10) NOT NULL,
-  `amount` double(10,2) NOT NULL,
-  `transaction_id` varchar(50) NOT NULL,
-  `payment_status` varchar(25) NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -355,22 +345,9 @@ ALTER TABLE `order_table`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `order_tax`
---
-ALTER TABLE `order_tax`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_order_tax_order` (`order_id`);
-
---
 -- Indexes for table `products`
 --
 ALTER TABLE `products`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `stripe_payment`
---
-ALTER TABLE `stripe_payment`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -408,22 +385,10 @@ ALTER TABLE `order_table`
   MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
--- AUTO_INCREMENT for table `order_tax`
---
-ALTER TABLE `order_tax`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
-
---
--- AUTO_INCREMENT for table `stripe_payment`
---
-ALTER TABLE `stripe_payment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user`
@@ -440,12 +405,6 @@ ALTER TABLE `user`
 --
 ALTER TABLE `order_items`
   ADD CONSTRAINT `fk_order_items_order` FOREIGN KEY (`order_id`) REFERENCES `order_table` (`ID`) ON DELETE CASCADE;
-
---
--- Constraints for table `order_tax`
---
-ALTER TABLE `order_tax`
-  ADD CONSTRAINT `fk_order_tax_order` FOREIGN KEY (`order_id`) REFERENCES `order_table` (`ID`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
