@@ -8,7 +8,6 @@ if (!isset($_SESSION['username'])) {
     exit;
 }
 include '../database/conn.php';
-
 ?>
 <?php
 include '../includes/functions.php';
@@ -20,20 +19,32 @@ if (isset($_GET['id'])) {
 
     if ($orderDetails) {
         // Display a form to update order status
-        echo '<div class="container mt-5>';
-        echo '<h1 class="text-center">Update Order Status</h1>';
-        echo '<div class="card m-2">';
+        echo '<div class="container mt-5">';
+        echo '<h1 class="text-center mb-4">Update Order Status</h1>';
+        echo '<div class="row justify-content-center">';
+        echo '<div class="col-md-6">';
+        echo '<div class="card">';
         echo '<div class="card-body">';
         echo '<form action="process_update.php" method="post">';
-        echo '<label for="status">New Status:</label>';
-        echo '<select name="status" id="status" required>';
+        
+        echo '<div class="mb-3">';
+        echo '<label for="status" class="form-label">New Status:</label>';
+        echo '<select name="status" id="status" class="form-select" required>';
         echo '<option value="In Process" selected>In Process</option>';
         echo '<option value="Approved">Approved</option>';
         echo '<option value="Not Approved">Not Approved</option>';
         echo '</select>';
+        echo '</div>';
+        
         echo '<input type="hidden" name="order_id" value="' . $orderId . '">';
-        echo '<button type="submit">Update Status</button>';
+        
+        echo '<div class="d-grid">';
+        echo '<button type="submit" class="btn btn-primary">Update Status</button>';
+        echo '</div>';
+        
         echo '</form>';
+        echo '</div>';
+        echo '</div>';
         echo '</div>';
         echo '</div>';
         echo '</div>';

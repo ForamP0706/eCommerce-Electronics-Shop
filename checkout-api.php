@@ -8,7 +8,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['checkout'])) {
     $city = $_POST['city'];
     $province = $_POST['province'];
     $zip = $_POST['zip'];
-
     if (!empty($_POST["delivery_address"])) {
         $delivery_address = test_input($_POST["delivery_address"]);
       } else {
