@@ -10,7 +10,7 @@ if (!isset($_SESSION['username'])) {
 include '../database/conn.php';
 include '../includes/functions.php';
 // fetching  categories from the database
-$categoriesQuery = "SELECT id, category_name FROM categories";
+$categoriesQuery = "SELECT id, category_name FROM categories WHERE is_enabled = 1";
 $categoriesResult = mysqli_query($conn, $categoriesQuery);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
