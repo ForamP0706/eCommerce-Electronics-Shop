@@ -8,6 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['checkout'])) {
     $city = $_POST['city'];
     $province = $_POST['province'];
     $zip = $_POST['zip'];
+
     if (!empty($_POST["delivery_address"])) {
         $delivery_address = test_input($_POST["delivery_address"]);
       } else {
@@ -44,32 +45,42 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['checkout'])) {
           $zip = strtoupper($zip);
       }
       }
-   if (!empty($cartProducts) && !empty($delivery_address) && !empty($city) && !empty($province) && !empty($zip)) {
+      if (!empty($cartProducts) && !empty($delivery_address) && !empty($city) && !empty($province) && !empty($zip)) {
+        
         $insertAddressQuery = "INSERT INTO delivery_address (address, unit_number, city, province, zip)
         VALUES (?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($insertAddressQuery);
         $stmt->bind_param("sssss", $delivery_address, $unit_number, $city, $province, $zip);
         $stmt->execute();
 
+        
         $delivery_address_id = $stmt->insert_id;
 
+        
         $insert_order_query = "INSERT INTO order_table (order_id_index,order_total_amount, delivery_address_id, customer_id) VALUES (UUID(),?, ?, ?)";
         $stmt = $conn->prepare($insert_order_query);
         $order_total_amount = calculateOrderTotal($cartProducts);
         $stmt->bind_param("dii", $order_total_amount, $delivery_address_id, $customer_id);
         $stmt->execute();
 
+        
         $order_id = $stmt->insert_id;
+
+        
         $insert_order_item_query = "INSERT INTO order_items (order_id, product_id, quantity, product_price) VALUES (?, ?, ?,?)";
         $stmt = $conn->prepare($insert_order_item_query);
-        foreach ($cart as $product_id => $quantity ) {
-            $productPrice = getProductPrice($product_id);  
-    
+        foreach ($cart as $product_id => $quantity) {
+            $productPrice = getProductPrice($product_id);
+
             $stmt->bind_param("iiid", $order_id, $product_id, $quantity, $productPrice);
-           
+            $stmt->execute();
         }
+
+       
     }
 }
+
+
 function test_input($data)
 {
   $data = trim($data);
@@ -77,6 +88,7 @@ function test_input($data)
   $data = htmlspecialchars($data);
   return $data;
 }
+
 
 function calculateOrderTotal($cartProducts) {
     $total = 0.0; 
