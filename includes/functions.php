@@ -239,8 +239,8 @@ function get_categories($conn) {
     return $categories;
 }
 function insert_successful_orders($conn) {
-    $sql = "INSERT INTO order_table (order_id_index, order_total_amount, order_date, customer_id, customer_name, order_status)
-            SELECT transaction_id AS order_id_index, amount AS order_total_amount, created_at AS order_date, id AS customer_id, fullname AS customer_name, 'Approved' AS order_status
+    $sql = "INSERT INTO order_table (order_id_index, order_total_amount, order_date, customer_id, order_status)
+            SELECT transaction_id AS order_id_index, amount AS order_total_amount, created_at AS order_date, id AS customer_id, 'Approved' AS order_status
             FROM stripe_payment
             WHERE payment_status = 'succeeded'";
 
@@ -252,5 +252,6 @@ function insert_successful_orders($conn) {
 
     return $result;
 }
+
 
 ?>
