@@ -1,6 +1,7 @@
 <?php
 include('includes/header.php');
 include('database/conn.php');
+include 'includes/functions.php';
 
 if(!empty($_GET['tid'])){
     $transaction_id  = $_GET['tid'];
@@ -18,6 +19,7 @@ if(!empty($_GET['tid'])){
         $item_description = $row['item_description'];
         $currency = $row['currency'];
         $amount = $row['amount'];
+        insert_successful_orders($conn);
     }
 }else{ 
     header("Location: index.php"); 

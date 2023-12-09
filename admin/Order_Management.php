@@ -20,7 +20,6 @@ $orders = get_orders($conn);
             <tr>
                 <th>Order ID</th>
                 <th>Order Date</th>
-                <th>Customer</th>
                 <th>Total Amount</th>
                 <th>Status</th>
                 <th>Action</th>
@@ -31,14 +30,7 @@ $orders = get_orders($conn);
                 <tr>
                     <td><?php echo $order['order_id_index']; ?></td>
                     <td><?php echo $order['order_date']; ?></td>
-                    <td>
-                        <?php
-                        // Fetch customer name based on customer_id
-                        $customer_id = $order['customer_id'];
-                        $customer_name = get_customer_name($conn, $customer_id);
-                        echo $customer_name;
-                        ?>
-                    </td>
+                    
                     <td><?php echo $order['order_total_amount']; ?></td>
                     <td><?php echo $order['order_status']; ?></td>
                     <td>
