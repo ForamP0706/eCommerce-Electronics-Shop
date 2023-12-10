@@ -15,7 +15,7 @@ $orders = get_orders($conn);
 <body class=" bg-gray-200">
     <main class="main-content position-relative  border-radius-lg mx-auto">
         <div class="container mt-5 border rounded p-4 bg-white">
-        <h2 class="text-center animate__animated animate__fadeIn glow-text">Order Management</h2>
+            <h2 class="text-center animate__animated animate__fadeIn glow-text">Order Management</h2>
 
             <div class="table-responsive ">
                 <table class="table table-hover table-striped">
@@ -31,10 +31,31 @@ $orders = get_orders($conn);
                     <tbody>
                         <?php foreach ($orders as $order) : ?>
                             <tr>
-                                <td><?php echo $order['order_id_index']; ?></td>
-                                <td><?php echo $order['order_date']; ?></td>
-                                <td><?php echo '$' . number_format($order['order_total_amount'], 2); ?></td>
-                                <td><?php echo $order['order_status']; ?></td>
+                                <td class="font-weight-bold text-dark"><?php echo $order['order_id_index']; ?></td>
+                                <td class="text-muted font-italic"><?php echo $order['order_date']; ?></td>
+                                <td class="font-weight-bold text-dark"><?php echo '$' . number_format($order['order_total_amount'], 2); ?></td>
+                                <?php
+                                $statusClass = '';
+
+                                switch ($order['order_status']) {
+                                    case 'Approved':
+                                        $statusClass = 'text-success';
+                                        break;
+                                    case 'In Process':
+                                        $statusClass = 'text-warning';
+                                        break;
+                                    case 'Not Approved':
+                                        $statusClass = 'text-danger';
+                                        break;
+                                    default:
+
+                                        $statusClass = 'font-weight-bold';
+                                        break;
+                                }
+                                ?>
+
+                                <td class="<?php echo $statusClass; ?>"><?php echo $order['order_status']; ?></td>
+
                                 <td>
                                     <div class="btn-group" role="group">
                                         <a href="view_order.php?id=<?php echo $order['ID']; ?>" class="btn btn-info btn-sm">
