@@ -3,13 +3,16 @@ include('includes/header.php');
 include('includes/navbar.php');
 ?>
 
-<div class="container mt-5">
-    <h1>Your Shopping Cart</h1>
-    <div id="cart-table"></div>
+<div class="container mt-5 vh-100">
+    <div class="cart-container border rounded p-4">
+        <h1>Your Shopping Cart</h1>
+        <div id="cart-table"></div>
         <a href="checkout.php" class="btn btn-primary mt-4 mb-4 mr-4">Proceed to Checkout</a>
         <button onclick="localStorage.setItem('cart','{}'), location.reload();" class="btn btn-danger mt-4 mb-4 mr-4">Empty Cart</button>
-    <a href="shop.php" class="btn btn-secondary mt-4 mb-4 mr-4">Continue Shopping</a>
+        <a href="shop.php" class="btn btn-secondary mt-4 mb-4 mr-4">Continue Shopping</a>
+    </div>
 </div>
+
 <script>
     const cartData = localStorage.getItem('cart') || '{}';
 
