@@ -9,13 +9,13 @@ if (!isset($_SESSION['username'])) {
 include '../database/conn.php';
 include '../includes/functions.php';
 
-// Retrieving orders
 $orders = get_orders($conn);
 
 ?>
 <div class="container mt-5 mb-5 border rounded p-4 bg-white">
     <h2>Order Management</h2>
-    <table class="table">
+    <div class="table-responsive">
+    <table class="table table-striped table-bordered">
         <thead>
             <tr>
                 <th>Order ID</th>
@@ -51,6 +51,7 @@ $orders = get_orders($conn);
             <?php endforeach; ?>
         </tbody>
     </table>
+</div>
 </div>
 <?php
 include('includes/footer.php');
