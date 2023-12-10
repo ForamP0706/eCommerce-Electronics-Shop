@@ -28,8 +28,11 @@ Electronic Ecommerce Website
   <link id="pagestyle" href="assets/css/material-dashboard.min.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
  <!-- <link rel="stylesheet" href="customstyle.css"> -->
+ <style>
+        body {
+            padding-bottom: 70px; /* Adjust this value based on your footer's height */
+        }
+    </style>
 </head>
 
-<body class="g-sidenav-show  bg-gray-200">
-    <?php include('sidebar.php');?>
-<main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+

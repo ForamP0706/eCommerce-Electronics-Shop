@@ -5263,7 +5263,7 @@ fieldset:disabled .btn {
   --bs-btn-close-disabled-opacity: 0.25;
   --bs-btn-close-white-filter: invert(1) grayscale(100%) brightness(200%);
   box-sizing: content-box;
-  width: 1em;
+  width: 100%;
   height: 1em;
   padding: 0.25em 0.25em;
   color: var(--bs-btn-close-color);
