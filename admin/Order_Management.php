@@ -15,10 +15,11 @@ $orders = get_orders($conn);
 <body class=" bg-gray-200">
     <main class="main-content position-relative  border-radius-lg mx-auto">
         <div class="container mt-5 border rounded p-4 bg-white">
-            <h2 class="text-center ">Order Management</h2>
+        <h2 class="text-center animate__animated animate__fadeIn glow-text">Order Management</h2>
+
             <div class="table-responsive ">
                 <table class="table table-hover table-striped">
-                    <thead class="thead-dark">
+                    <thead class="text-light thead-dark bg-dark">
                         <tr>
                             <th scope="col">Order ID</th>
                             <th scope="col">Order Date</th>
@@ -47,7 +48,6 @@ $orders = get_orders($conn);
                                         </a>
                                     </div>
                                 </td>
-
                             </tr>
                         <?php endforeach; ?>
                     </tbody>

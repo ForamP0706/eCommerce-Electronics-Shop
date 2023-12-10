@@ -26,11 +26,23 @@ Electronic Ecommerce Website
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
   <!-- CSS Files -->
   <link id="pagestyle" href="assets/css/material-dashboard.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
- <!-- <link rel="stylesheet" href="customstyle.css"> -->
  <style>
         body {
-            padding-bottom: 70px; /* Adjust this value based on your footer's height */
+            padding-bottom: 70px; 
+        }
+        @keyframes glowing {
+            0% { text-shadow: 0 0 5px rgba(173, 216, 230, 0.8), 0 0 10px rgba(173, 216, 230, 0.8); }
+            50% { text-shadow: 0 0 10px rgba(173, 216, 230, 1), 0 0 15px rgba(173, 216, 230, 1); }
+            100% { text-shadow: 0 0 5px rgba(173, 216, 230, 0.8), 0 0 10px rgba(173, 216, 230, 0.8); }
+        }
+
+        .glow-text {
+            color: #000;
+            font-weight: bold; 
+            font-size: 2rem; 
+            animation: glowing 2s infinite;
         }
     </style>
 </head>
