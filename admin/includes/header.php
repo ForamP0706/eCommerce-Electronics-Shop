@@ -44,6 +44,7 @@ Electronic Ecommerce Website
             font-size: 2rem; 
             animation: glowing 2s infinite;
         }
+        
     </style>
 </head>
 
