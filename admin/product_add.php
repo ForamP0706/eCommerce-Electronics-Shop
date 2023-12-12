@@ -38,27 +38,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <!-- <main class="main-content position-relative vh-100 border-radius-lg "> -->
 <div class="container-fluid vh-100 mt-4">
     <div class="row justify-content-center align-items-center">
-        <div class="col-md-6 border p-4 rounded bg-white">
+        <div class="col-md-6 border p-4 rounded bg-light">
             <form method="post">
                 <div class="mb-3">
                     <label for="name" class="form-label">Name</label>
-                    <input type="text" id="name" name="name" class="form-control p-2 " style="background-color: white; border: 1px solid #ced4da;" required>
+                    <input type="text" id="name" name="name" class="form-control border p-2 bg-white" required>
                 </div>
                 <div class="mb-3">
                     <label for="description" class="form-label">Description</label>
-                    <textarea id="description" name="description" class="form-control p-2" style="background-color: white; border: 1px solid #ced4da;"></textarea>
+                    <textarea id="description" name="description" class="form-control borde p-2 bg-white" rows="3"></textarea>
                 </div>
                 <div class="mb-3">
                     <label for="price" class="form-label">Price</label>
-                    <input type="text" id="price" name="price" class="form-control p-2" style="background-color: white; border: 1px solid #ced4da;" required>
+                    <input type="text" id="price" name="price" class="form-control border  p-2 bg-white" required>
                 </div>
                 <div class="mb-3">
                     <label for="quantity" class="form-label">Quantity</label>
-                    <input type="number" id="quantity" name="qty" class="form-control p-2" style="background-color: white; border: 1px solid #ced4da;" required>
+                    <input type="number" id="quantity" name="qty" class="form-control border p-2 bg-white" required>
                 </div>
                 <div class="mb-3">
                     <label for="category_id" class="form-label">Category</label>
-                    <select id="category_id" name="category_id" class="form-control p-2" style="background-color: white; border: 1px solid #ced4da;" required>
+                    <select id="category_id" name="category_id" class="form-select border p-2 bg-white" required>
                         <?php
                         while ($row = mysqli_fetch_assoc($categoriesResult)) {
                             echo "<option value='{$row['id']}'>{$row['category_name']}</option>";
@@ -66,11 +66,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         ?>
                     </select>
                 </div>
-                <button type="submit" class="btn btn-dark">Add Product</button>
-                <a href="product_list.php" class="btn btn-secondary">Back to Product List</a>
+                <div class="d-flex justify-content-between align-items-center">
+                    <button type="submit" class="btn btn-dark">Add Product</button>
+                    <a href="product_list.php" class="btn btn-secondary">Back to Product List</a>
+                </div>
             </form>
         </div>
     </div>
 </div>
+
 <!-- </main> -->
 <?php include('includes/footer.php');
