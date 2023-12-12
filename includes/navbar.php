@@ -86,7 +86,7 @@ $baseUrl = "/eCommerce-Electronics-Shop";
             <?php if (isset($_SESSION['username'])) { ?>
             <form class="d-flex" action="view_cart.php" method="get">
     <button class="btn border-white text-white" type="submit">
-        <i class="bi-cart-fill me-1"></i>
+        <i class=" me-1"></i>
         Cart
         <span class="badge bg-dark text-white ms-1 rounded-pill" id="cart-item-count"></span>
     </button>
@@ -102,3 +102,4 @@ $baseUrl = "/eCommerce-Electronics-Shop";
 <script>
     document.getElementById('cart-item-count').innerText = '' + Object.keys(JSON.parse(localStorage.getItem('cart') || '{}')).length;
 </script>
+<!-- bi-cart-fill  FOR CART ICON-->

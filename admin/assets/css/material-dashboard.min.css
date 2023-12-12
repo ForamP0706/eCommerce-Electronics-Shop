@@ -7625,7 +7625,7 @@ fieldset:disabled .btn {
   max-height: 100% !important;
 }
 .vh-100 {
-  height: 87vh !important;
+  height: auto !important;
 }
 .min-vh-25 {
   min-height: 25vh !important;

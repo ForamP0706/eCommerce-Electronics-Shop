@@ -3,6 +3,7 @@ require_once 'stripe_header.php';
 
 $payment = !empty($jsonObj->payment_intent)?$jsonObj->payment_intent:''; 
 $customer_id = !empty($jsonObj->customer_id)?$jsonObj->customer_id:''; 
+$order_id = !empty($jsonObj->order_id)?$jsonObj->order_id:''; 
     
 try {
     $customerData = \Stripe\Customer::retrieve($customer_id);  
@@ -40,6 +41,13 @@ if(empty($error)) {
             $stmt->bind_param("ssssdss", $fullname, $email, $item_description, $currency, $amount, $transaction_id, $payment_status);
             $stmt->execute();
         }
+        $query = "UPDATE `order_table` set order_status = 'Approved' where `ID` = ?";
+        $stmt = $conn->prepare($query);
+        if ($stmt === false) {
+            die('Error preparing statement: ' . $conn->error);
+        }
+       $stmt->bind_param("s", $jsonObj->order_id);
+        $stmt->execute();
         
         $conn->close();
         $output = [ 

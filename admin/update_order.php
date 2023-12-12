@@ -18,7 +18,6 @@ if (isset($_GET['id'])) {
     $orderDetails = get_order_details($conn, $orderId);
 
     if ($orderDetails) {
-        // Display a form to update order status
         echo '<div class="container mt-5">';
         echo '<h1 class="text-center mb-4">Update Order Status</h1>';
         echo '<div class="row justify-content-center">';

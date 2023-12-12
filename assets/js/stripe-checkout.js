@@ -71,10 +71,26 @@ async function handlePaymentSubmit(e) {
         body: JSON.stringify({ payment_intent_id: payment_intent_id, fullname: fullname, email: email }),
     }).then((r) => r.json());
     
+    const form = document.forms['first'];
+    const formData = new FormData(form);
+    const jsonData = {
+        cart: localStorage.getItem('cart')||'{}',
+        customer_id: customer_id,
+    };
+    
+    formData.forEach((value, key) => {
+      jsonData[key] = value;
+    });
+    const response = await fetch('checkout-api.php', {
+        method:'POST',
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(jsonData),
+    }).then(response=>response.json());
+
     const { error } = await stripe.confirmPayment({
         elements,
         confirmParams: {
-            return_url: window.location.href+'?customer_id='+customer_id,
+            return_url: window.location.href+'?customer_id='+customer_id+'&order_id='+response.order_id,
         },
     });
     
@@ -98,6 +114,10 @@ async function checkStatus() {
         "customer_id"
     );
     
+    const order_id = new URLSearchParams(window.location.search).get(
+        "order_id"
+    );
+    
     if (!clientSecret) {
         return;
     }
@@ -107,20 +127,16 @@ async function checkStatus() {
     if (paymentIntent) {
         switch (paymentIntent.status) { 
             case "succeeded":
-                const form = document.forms['first'];
-                await fetch('checkout-api.php', {
-                    method:'POST',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                    },
-                            body: new FormData(form),
-                });
                 localStorage.setItem('cart', '{}');
                                    
                 fetch("stripe-api/payment_insert.php", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ payment_intent: paymentIntent, customer_id: customer_id }),
+                    body: JSON.stringify({ 
+                        payment_intent: paymentIntent,
+                        customer_id: customer_id,
+                        order_id: order_id
+                    }),
                 })
                 .then(response => response.json())
                 .then(data => {

@@ -1,31 +1,33 @@
 <?php
-session_start();
-include('database/conn.php');
+require_once 'stripe-api/stripe_header.php';
+require_once 'total_amount.php';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['checkout'])) {
-    $delivery_address = $_POST['delivery_address'];
-    $unit_number = $_POST['unit_number'];
-    $city = $_POST['city'];
-    $province = $_POST['province'];
-    $zip = $_POST['zip'];
 
-    if (!empty($_POST["delivery_address"])) {
-        $delivery_address = test_input($_POST["delivery_address"]);
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $delivery_address = $jsonObj->delivery_address;
+    $unit_number = $jsonObj->unit_number;
+    $city = $jsonObj->city;
+    $customer_id = $jsonObj->customer_id;
+    $province = $jsonObj->province;
+    $zip = $jsonObj->zip;
+
+    if (!empty($jsonObj->delivery_address)) {
+        $delivery_address = test_input($jsonObj->delivery_address);
       } else {
            
         $delivery_address = strtoupper($delivery_address);
     }
     
-      if (!empty($_POST["city"])) {
-        $city = test_input($_POST["city"]);
+      if (!empty($jsonObj->city)) {
+        $city = test_input($jsonObj->city);
       }else {
            
         $city = strtoupper($city);
     }
     
       
-      if (!empty($_POST["province"])) {
-        $province = test_input($_POST["province"]);
+      if (!empty($jsonObj->province)) {
+        $province = test_input($jsonObj->province);
       }else {
            
         $province = strtoupper($province);
@@ -33,8 +35,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['checkout'])) {
       
     
      
-      if (!empty($_POST["zip"])) {
-        $zip = test_input($_POST["zip"]);
+      if (!empty($jsonObj->zip)) {
+        $zip = test_input($jsonObj->zip);
     
     
         if (!preg_match("/^\d{5}$/", $zip)) {
@@ -66,6 +68,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['checkout'])) {
         
         $order_id = $stmt->insert_id;
 
+        $insert_order_tax_query = "INSERT INTO order_tax (order_id, tax_amount) VALUES (?, ?)";
+        $stmt = $conn->prepare($insert_order_tax_query);
+        $tax = $order_total_amount * 0.13;
+        $stmt->bind_param("id",$order_id, $tax);
+        $stmt->execute();
+
         
         $insert_order_item_query = "INSERT INTO order_items (order_id, product_id, quantity, product_price) VALUES (?, ?, ?,?)";
         $stmt = $conn->prepare($insert_order_item_query);
@@ -76,7 +84,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['checkout'])) {
             $stmt->execute();
         }
 
-       
+       echo "{\"order_id\": \"$order_id\"}";
     }
 }
 
@@ -90,23 +98,6 @@ function test_input($data)
 }
 
 
-function calculateOrderTotal($cartProducts) {
-    $total = 0.0; 
-
-    foreach ($cartProducts as $product) {
-        
-        $productPrice = $product['price'];
-        $quantity = $product['quantity'];
-
-       
-        $subtotal = $productPrice * $quantity;
-
-    
-        $total += $subtotal;
-    }
-
-    return $total;
-}
 function getProductPrice($product_id) {
    
     $query = "SELECT price FROM products WHERE id = ?";
