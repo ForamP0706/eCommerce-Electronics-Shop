@@ -44,7 +44,8 @@ function renderCart(cartItems) {
         totalPrice += subtotal;
 
         cartHTML += `<tr>
-                        <td>${product.prod_name}</td>
+        
+                        <td>${product.prod_name.slice(0, 30)}</td>
                         <td>$${product.price}</td>
                         <td><input type="number" id="quantity${product.id}" value="${product.quantity}"></td>
                         <td><button onclick="updateQuantity(${product.id})" class="btn btn-primary mr-2 mb-2" style="padding:8px;">Update</button>
