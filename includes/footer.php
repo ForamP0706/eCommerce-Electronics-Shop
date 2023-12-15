@@ -14,7 +14,7 @@
                 <a href="https://www.instagram.com/" class="text-light mx-2"><i class="fab fa-instagram"></i></a>
             </div>
             <div class="container">
-                <p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p>
+                <p class="m-0 text-center text-white">Copyright &copy; Electronic e-store 2023</p>
             </div>
         </footer>
        
