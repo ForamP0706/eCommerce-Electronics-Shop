@@ -64,7 +64,7 @@ $orders = get_orders($conn);
                                         <a href="update_order.php?id=<?php echo $order['ID']; ?>" class="btn btn-warning btn-sm">
                                             <i class="fas fa-edit"></i> Update Status
                                         </a>
-                                        <a href="delete_order.php?id=<?php echo $order['ID']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this order?')">
+                                        <a href="delete_order.php?id=<?php echo $order['ID']; ?>" class="btn btn-danger btn-sm" >
                                             <i class="fas fa-trash-alt"></i> Delete
                                         </a>
                                     </div>
