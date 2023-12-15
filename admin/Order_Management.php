@@ -12,7 +12,7 @@ include '../includes/functions.php';
 $orders = get_orders($conn);
 ?>
 
-<body class=" bg-gray-200">
+<body class=" bg-gray-200 ">
     <main class="main-content position-relative  border-radius-lg mx-auto">
         <div class="container mt-5 border rounded p-4 bg-white">
             <h2 class="text-center animate__animated animate__fadeIn glow-text">Order Management</h2>
@@ -44,7 +44,7 @@ $orders = get_orders($conn);
                                     case 'In Process':
                                         $statusClass = 'text-warning';
                                         break;
-                                    case 'Not Approved':
+                                    case 'not approved':
                                         $statusClass = 'text-danger';
                                         break;
                                     default:

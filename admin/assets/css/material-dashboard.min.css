@@ -14636,6 +14636,9 @@ fieldset:disabled .btn {
   .text-xl-center {
     text-align: center !important;
   }
+  .text-blue{
+    color: #0057f7;
+  }
   .transform-scale-xl-5 {
     transform: scale(0.5) !important;
   }
@@ -16315,6 +16318,9 @@ fieldset:disabled .btn {
 }
 .badge.bg-dark-blue {
   background: #1a237e;
+}
+.bg-light-grey{
+  background: #f2f2f2;
 }
 .badge,
 .btn {

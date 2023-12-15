@@ -31,6 +31,7 @@ Electronic Ecommerce Website
  <style>
         body {
             padding-bottom: 70px; 
+            background-color: #f2f2f2;
         }
         @keyframes glowing {
             0% { text-shadow: 0 0 5px rgba(173, 216, 230, 0.8), 0 0 10px rgba(173, 216, 230, 0.8); }
@@ -44,7 +45,13 @@ Electronic Ecommerce Website
             font-size: 2rem; 
             animation: glowing 2s infinite;
         }
-        
+        .navbar-nav .nav-link {
+            transition: color 0.3s ease-in-out;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #17a2b8;
+        }
     </style>
 </head>
 

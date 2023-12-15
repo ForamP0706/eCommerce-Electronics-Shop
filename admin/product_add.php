@@ -36,9 +36,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 <!-- <main class="main-content position-relative vh-100 border-radius-lg "> -->
-<div class="container-fluid vh-100 mt-4">
+<div class="container-fluid min-vh-100 bg-light-grey">
     <div class="row justify-content-center align-items-center">
-        <div class="col-md-6 border p-4 rounded bg-light">
+        <div class="col-md-6 border p-4 rounded bg-white mt-4">
             <form method="post">
                 <div class="mb-3">
                     <label for="name" class="form-label">Name</label>
@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
                 <div class="mb-3">
                     <label for="description" class="form-label">Description</label>
-                    <textarea id="description" name="description" class="form-control borde p-2 bg-white" rows="3"></textarea>
+                    <textarea id="description" name="description" class="form-control border p-2 bg-white" rows="3"></textarea>
                 </div>
                 <div class="mb-3">
                     <label for="price" class="form-label">Price</label>

@@ -14,7 +14,7 @@ $products = get_products($conn);
 $categories = get_categories($conn);
 ?>
 
-<div class="d-flex flex-column min-vh-100">
+<div class="d-flex flex-column min-vh-100 bg-light-grey">
     <div class="container mt-5 mb-5 border rounded p-4 bg-white">
         <div class="table-responsive">
             <table class="table table-bordered table-hover">
@@ -48,7 +48,7 @@ $categories = get_categories($conn);
                                     <form method="post" action="update_quantity.php" class="form-inline">
                                         <div class="input-group">
                                             <input type="hidden" name="product_id" value="<?= $product['id']; ?>">
-                                            <input type="number" name="new_quantity" min="0" required placeholder="New Quantity" class="form-control mr-2 p-3">
+                                            <input type="number" name="new_quantity" min="0" required placeholder="New Quantity" class="form-control mr-2 p-3 bg-white">
                                             <div class="input-group-append d-flex align-items-center">
                                                 <button type="submit" class="btn btn-primary m-0">
                                                     <i class="fas fa-sync-alt"></i> Update

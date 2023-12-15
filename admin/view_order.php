@@ -35,11 +35,12 @@ if (isset($_GET['id'])) {
         echo '<p class="card-text"><strong>Status:</strong> ' . ($orderDetails['order_status'] ? $orderDetails['order_status'] : 'Not available') . '</p>';
         echo '<p class="card-text"><strong>Order Date:</strong> ' . $orderDetails['order_date'] . '</p>';
           // Display customer details
-          if ($customerDetails) {
-            echo '<p class="card-text"><strong>Customer Name:</strong> ' . $customerDetails['first_name'] . ' ' . $customerDetails['last_name'] . '</p>';
-        } else {
-            echo '<p class="card-text"><strong>Customer Name:</strong> Not available</p>';
-        }
+        //   if ($customerDetails) {
+        //     $customerName = get_customer_name($conn, $customerId);
+        //     echo '<p class="card-text"><strong>Customer Name:</strong> ' . $customerName . '</p>';
+        // } else {
+        //     echo '<p class="card-text"><strong>Customer Name:</strong> Not available</p>';
+        // }
         // Display delivery address details
         if ($addressDetails) {
             echo '<p class="card-text"><strong>Delivery Address:</strong> ' . $addressDetails['address'];

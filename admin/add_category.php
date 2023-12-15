@@ -50,10 +50,10 @@ $categories = $result->fetch_all(MYSQLI_ASSOC);
 ?>
 
 <!-- <main class="main-content position-relative vh-100 border-radius-lg"> -->
-<div class="container">
-    <div class="row justify-content-center align-items-center my-5">
+<div class="container-fluid bg-light-grey ">
+    <div class="row justify-content-center align-items-center">
         <div class="col-md-6">
-            <form method="post" class="border p-4 rounded shadow bg-white">
+            <form method="post" class="border p-4 rounded shadow bg-white mt-4">
                 <h2 class="mb-4">Add New Category</h2>
 
                 <?php if (isset($success_message)) : ?>
@@ -75,7 +75,7 @@ $categories = $result->fetch_all(MYSQLI_ASSOC);
                 <button type="submit" class="btn btn-primary" name="addCategory">Add Category</button>
             </form>
 
-            <div class="row mt-5">
+            <div class="row mt-5 mb-5">
                 <div class="col-md-20">
                     <h2>Categories</h2>
                     <ul class="list-group">
